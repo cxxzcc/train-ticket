@@ -1,0 +1,92 @@
+@startuml
+actor User
+participant "ts-seat-service" as SeatService
+participant "ts-travel-service" as TravelService
+participant "ts-travel2-service" as Travel2Service
+participant "ts-order-service" as OrderService
+participant "ts-order-other-service" as OrderOtherService
+participant "ts-config-service" as ConfigService
+participant "ts-travel-mongo" as TravelMongo
+participant "ts-travel2-mongo" as Travel2Mongo
+participant "ts-order-mongo" as OrderMongo
+participant "ts-order-other-mongo" as OrderOtherMongo
+participant "ts-config-mongo" as ConfigMongo
+
+== Get Seat Information ==
+User -> SeatService: GET /seat/getSeat
+alt if trainNumber starts with "G" or "D"
+    SeatService -> TravelService: GET /travel/getRouteByTripId
+    TravelService -> TravelMongo: Query trip data
+    TravelMongo --> TravelService: Return trip data
+    TravelService --> SeatService: Return trip data
+
+    SeatService -> OrderService: GET /order/getTicketListByDateAndTripId
+    OrderService -> OrderMongo: Query orders data
+    OrderMongo --> OrderService: Return orders data
+    OrderService --> SeatService: Return orders data
+
+    SeatService -> TravelService: GET /travel/getTrainTypeByTripId
+    TravelService -> TravelMongo: Query trip data
+    TravelMongo --> TravelService: Return trip data
+    TravelService --> SeatService: Return trip data
+else
+    SeatService -> Travel2Service: GET /travel2/getRouteByTripId
+    Travel2Service -> Travel2Mongo: Query trip data
+    Travel2Mongo --> Travel2Service: Return trip data
+    Travel2Service --> SeatService: Return trip data
+
+    SeatService -> OrderOtherService: GET /orderOther/getTicketListByDateAndTripId
+    OrderOtherService -> OrderOtherMongo: Query orders data
+    OrderOtherMongo --> OrderOtherService: Return orders data
+    OrderOtherService --> SeatService: Return orders data
+
+    SeatService -> Travel2Service: GET /travel2/getTrainTypeByTripId
+    Travel2Service -> Travel2Mongo: Query trip data
+    Travel2Mongo --> Travel2Service: Return trip data
+    Travel2Service --> SeatService: Return trip data
+end
+
+== Get Left Ticket of Interval ==
+User -> SeatService: GET /seat/getLeftTicketOfInterval
+alt if trainNumber starts with "G" or "D"
+    SeatService -> TravelService: GET /travel/getRouteByTripId
+    TravelService -> TravelMongo: Query trip data
+    TravelMongo --> TravelService: Return trip data
+    TravelService --> SeatService: Return trip data
+
+    SeatService -> OrderService: GET /order/getTicketListByDateAndTripId
+    OrderService -> OrderMongo: Query orders data
+    OrderMongo --> OrderService: Return orders data
+    OrderService --> SeatService: Return orders data
+
+    SeatService -> TravelService: GET /travel/getTrainTypeByTripId
+    TravelService -> TravelMongo: Query trip data
+    TravelMongo --> TravelService: Return trip data
+    TravelService --> SeatService: Return trip data
+else
+    SeatService -> Travel2Service: GET /travel2/getRouteByTripId
+    Travel2Service -> Travel2Mongo: Query trip data
+    Travel2Mongo --> Travel2Service: Return trip data
+    Travel2Service --> SeatService: Return trip data
+
+    SeatService -> OrderOtherService: GET /orderOther/getTicketListByDateAndTripId
+    OrderOtherService -> OrderOtherMongo: Query orders data
+    OrderOtherMongo --> OrderOtherService: Return orders data
+    OrderOtherService --> SeatService: Return orders data
+
+    SeatService -> Travel2Service: GET /travel2/getTrainTypeByTripId
+    Travel2Service -> Travel2Mongo: Query trip data
+    Travel2Mongo --> Travel2Service: Return trip data
+    Travel2Service --> SeatService: Return trip data
+
+
+end
+
+
+SeatService -> ConfigService: GET /config/query
+ConfigService -> ConfigMongo: Query config data
+ConfigMongo --> ConfigService: Return config data
+ConfigService --> SeatService: Return config data
+
+SeatService --> User: Return seat information
+@enduml

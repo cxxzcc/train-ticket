@@ -1,0 +1,60 @@
+@startuml
+actor User
+participant "ts-account-service" as AccountService
+participant "ts-admin-service" as AdminService
+participant "ts-travel-service" as TravelService
+participant "ts-assurance-service" as AssuranceService
+participant "ts-food-service" as FoodService
+participant "ts-contacts-service" as ContactsService
+participant "ts-preserve-service" as PreserveService
+participant "ts-payment-service" as PaymentService
+participant "ts-execute-service" as ExecuteService
+
+== 管理员登录 ==
+User -> AccountService: POST /account/adminlogin
+AccountService --> User: Return login token
+
+== 管理员创建用户 ==
+User -> AdminService: POST /adminuser/addUser
+AdminService --> User: Return user creation result
+
+== 用户登录 ==
+User -> AccountService: POST /login
+AccountService --> User: Return user token
+
+== 查询行程信息 ==
+User -> TravelService: POST /travel/query
+TravelService --> User: Return trip information
+
+== 获取所有保险类型 ==
+User -> AssuranceService: GET /assurance/getAllAssuranceType
+AssuranceService --> User: Return assurance types
+
+== 获取行程中的食物信息 ==
+User -> FoodService: POST /food/getFood
+FoodService --> User: Return food information
+
+== 创建联系人 ==
+User -> ContactsService: POST /contacts/create
+ContactsService --> User: Return contact creation result
+
+== 获取联系人列表 ==
+User -> ContactsService: GET /contacts/findContacts
+ContactsService --> User: Return contact list
+
+== 预订订单 ==
+User -> PreserveService: POST /preserve
+PreserveService --> User: Return order ID
+
+== 支付订单 ==
+User -> PaymentService: POST /inside_payment/pay
+PaymentService --> User: Return payment result
+
+== 订单收款 ==
+User -> ExecuteService: POST /execute/collected
+ExecuteService --> User: Return collection result
+
+== 执行订单 ==
+User -> ExecuteService: POST /execute/execute
+ExecuteService --> User: Return execution result
+@enduml

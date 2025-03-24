@@ -1,0 +1,23 @@
+@startuml
+actor User
+participant "ts-payment-service" as PaymentService
+participant "ts-payment-mongo" as PaymentMongo
+
+== Payment Request (/payment/pay) ==
+User -> PaymentService: POST /payment/pay (Payment Data)
+PaymentService -> PaymentMongo: Insert payment record into 'payment' collection
+PaymentMongo --> PaymentService: Return insertion result
+PaymentService --> User: Return payment status (Success/Failure)
+
+== Add Money (/payment/addMoney) ==
+User -> PaymentService: POST /payment/addMoney (Amount)
+PaymentService -> PaymentMongo: Update balance in 'payment' collection
+PaymentMongo --> PaymentService: Return update result
+PaymentService --> User: Return updated balance
+
+== Query Payment (/payment/query) ==
+User -> PaymentService: GET /payment/query (Query Parameters)
+PaymentService -> PaymentMongo: Query 'payment' collection
+PaymentMongo --> PaymentService: Return query results
+PaymentService --> User: Return payment data
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+actor User
+participant "ts-notification-service" as NotificationService
+participant "Email Service" as EmailService
+
+== Preserve Success ==
+User -> NotificationService: POST /notification/preserve_success
+NotificationService -> EmailService: sendEmail
+EmailService --> NotificationService: Email sent
+NotificationService --> User: Notification sent
+
+== Order Create Success ==
+User -> NotificationService: POST /notification/order_create_success
+NotificationService -> EmailService: sendEmail
+EmailService --> NotificationService: Email sent
+NotificationService --> User: Notification sent
+
+== Order Changed Success ==
+User -> NotificationService: POST /notification/order_changed_success
+NotificationService -> EmailService: sendEmail
+EmailService --> NotificationService: Email sent
+NotificationService --> User: Notification sent
+
+== Order Cancel Success ==
+User -> NotificationService: POST /notification/order_cancel_success
+NotificationService -> EmailService: sendEmail
+EmailService --> NotificationService: Email sent
+NotificationService --> User: Notification sent
+@enduml

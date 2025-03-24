@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-preserve-service</OriginalElement>
+  <nodes>
+    <node x="370.0" y="726.0">preserve.domain.Contacts</node>
+    <node x="143.0" y="326.0">preserve.domain.OrderTicketsInfo</node>
+    <node x="464.0" y="1086.0">preserve.domain.Type</node>
+    <node x="299.0" y="1806.0">preserve.domain.VerifyResult</node>
+    <node x="338.0" y="1146.0">preserve.domain.CheckResult</node>
+    <node x="280.0" y="1986.0">preserve.domain.Ticket</node>
+    <node x="337.0" y="966.0">preserve.domain.GetContactsResult</node>
+    <node x="172.0" y="646.0">preserve.domain.GetTripAllDetailInfo</node>
+    <node x="205.5" y="46.0">preserve.domain.CheckInfo</node>
+    <node x="252.0" y="786.0">preserve.domain.Account</node>
+    <node x="15.5" y="1986.0">preserve.domain.OrderTicketsResult</node>
+    <node x="121.5" y="-14.0">preserve.domain.QueryForId</node>
+    <node x="-59.0" y="1866.0">preserve.domain.Order</node>
+    <node x="124.0" y="726.0">preserve.domain.GetContactsInfo</node>
+    <node x="189.0" y="126.0">preserve.domain.QueryPriceInfo</node>
+    <node x="123.0" y="966.0">preserve.domain.FoodOrder</node>
+    <node x="17.0" y="266.0">preserve.domain.AddAssuranceInfo</node>
+    <node x="174.5" y="406.0">preserve.domain.AddFoodOrderInfo</node>
+    <node x="50.5" y="586.0">preserve.domain.GetAccountByIdInfo</node>
+    <node x="-10.0" y="786.0">preserve.domain.PreserveInformation</node>
+    <node x="287.0" y="1506.0">preserve.domain.Trip</node>
+    <node x="354.0" y="1446.0">preserve.domain.TripResponse</node>
+    <node x="36.5" y="1806.0">preserve.controller.PreserveController</node>
+    <node x="364.5" y="1686.0">preserve.domain.GetTripAllDetailResult</node>
+    <node x="151.5" y="1866.0">preserve.service.PreserveServiceImpl</node>
+    <node x="45.0" y="46.0">preserve.domain.NotifyInfo</node>
+    <node x="52.0" y="466.0">preserve.PreserveApplication</node>
+    <node x="187.0" y="1626.0">preserve.domain.QueryForTravel</node>
+    <node x="144.5" y="2046.0">preserve.domain.CreateOrderInfo</node>
+    <node x="167.0" y="1326.0">preserve.domain.InsertConsignRecordResult</node>
+    <node x="87.5" y="186.0">preserve.domain.ConsignRecord</node>
+    <node x="-24.5" y="-14.0">preserve.domain.Gender</node>
+    <node x="-34.0" y="406.0">preserve.domain.TrainType</node>
+    <node x="-11.5" y="1146.0">preserve.domain.AssuranceType</node>
+    <node x="-103.0" y="2046.0">preserve.domain.CreateOrderResult</node>
+    <node x="87.0" y="1086.0">preserve.domain.AddFoodOrderResult</node>
+    <node x="-1.0" y="126.0">preserve.domain.OrderStatus</node>
+    <node x="87.0" y="1686.0">preserve.service.PreserveService</node>
+    <node x="-105.0" y="326.0">preserve.domain.QueryContactsInfo</node>
+    <node x="203.0" y="906.0">preserve.domain.GetAccountByIdResult</node>
+    <node x="50.0" y="1446.0">preserve.domain.AddAssuranceResult</node>
+    <node x="-116.0" y="186.0">preserve.domain.ConsignRequest</node>
+    <node x="-112.0" y="466.0">preserve.domain.SeatClass</node>
+    <node x="5.5" y="1266.0">preserve.domain.Assurance</node>
+    <node x="-119.0" y="46.0">preserve.domain.GetTripInfo</node>
+    <node x="-53.0" y="1506.0">preserve.domain.DocumentType</node>
+    <node x="-53.0" y="646.0">preserve.domain.ResultForTravel</node>
+    <node x="-102.0" y="1326.0">preserve.domain.SeatRequest</node>
+    <node x="460.5" y="1326.0">preserve.domain.TripId</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="preserve.service.PreserveServiceImpl" target="preserve.service.PreserveService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="246.0" y="1780.0" />
+      <point x="205.5" y="1780.0" />
+      <point x="39.5" y="14.0" />
+    </edge>
+    <edge source="preserve.domain.CreateOrderInfo" target="preserve.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="226.0" y="1960.0" />
+      <point x="-14.0" y="1960.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="preserve.controller.PreserveController" target="preserve.service.PreserveService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="126.0" y="1780.0" />
+      <point x="126.5" y="1780.0" />
+      <point x="-39.5" y="14.0" />
+    </edge>
+    <edge source="preserve.domain.GetAccountByIdResult" target="preserve.domain.Account" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="preserve.domain.Trip" target="preserve.domain.TripId" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="326.0" y="1400.0" />
+      <point x="426.0" y="1400.0" />
+      <point x="426.0" y="1300.0" />
+      <point x="506.0" y="1300.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="preserve.domain.AddFoodOrderResult" target="preserve.domain.FoodOrder" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="preserve.domain.CreateOrderResult" target="preserve.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="preserve.domain.TripId" target="preserve.domain.Type" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="preserve.domain.GetContactsResult" target="preserve.domain.Contacts" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="preserve.domain.GetTripAllDetailResult" target="preserve.domain.TripResponse" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="466.0" y="1580.0" />
+      <point x="526.0" y="1580.0" />
+      <point x="526.0" y="1420.0" />
+      <point x="426.0" y="1420.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="preserve.domain.GetTripAllDetailResult" target="preserve.domain.Trip" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="466.0" y="1600.0" />
+      <point x="266.0" y="1600.0" />
+      <point x="266.0" y="1480.0" />
+      <point x="326.0" y="1480.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="preserve.domain.ResultForTravel" target="preserve.domain.TrainType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="preserve.domain.OrderTicketsResult" target="preserve.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="106.0" y="1960.0" />
+      <point x="-14.0" y="1960.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="preserve.domain.AddAssuranceResult" target="preserve.domain.Assurance" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="146.0" y="1240.0" />
+      <point x="66.0" y="1240.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="preserve.domain.QueryForTravel" target="preserve.domain.Trip" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="266.0" y="1480.0" />
+      <point x="326.0" y="1480.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="preserve.domain.TripResponse" target="preserve.domain.TripId" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="426.0" y="1300.0" />
+      <point x="506.0" y="1300.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="preserve.domain.Assurance" target="preserve.domain.AssuranceType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.36717267552182165" showDependencies="true" x="234.5" y="1040.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

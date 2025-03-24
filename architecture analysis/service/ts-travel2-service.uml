@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-travel2-service</OriginalElement>
+  <nodes>
+    <node x="502.0" y="566.0">travel2.domain.QueryForTravel</node>
+    <node x="139.0" y="626.0">travel2.domain.AdminTrip</node>
+    <node x="-112.0" y="626.0">travel2.domain.GetTrainTypeResult</node>
+    <node x="750.0" y="226.0">travel2.domain.Information2</node>
+    <node x="-24.5" y="346.0">travel2.controller.Travel2Controller</node>
+    <node x="374.0" y="226.0">travel2.domain.Information</node>
+    <node x="302.0" y="626.0">travel2.domain.GetRouteResult</node>
+    <node x="757.0" y="746.0">travel2.domain.GetTripsByRouteIdInfo</node>
+    <node x="599.5" y="626.0">travel2.domain.GetTripAllDetailResult</node>
+    <node x="743.0" y="46.0">travel2.domain.SeatClass</node>
+    <node x="595.5" y="226.0">travel2.domain.TripId</node>
+    <node x="599.0" y="46.0">travel2.domain.Type</node>
+    <node x="719.0" y="566.0">travel2.domain.QueryTripResponsePackage</node>
+    <node x="465.0" y="166.0">travel2.repository.TripRepository</node>
+    <node x="650.5" y="806.0">travel2.Travel2Application</node>
+    <node x="107.0" y="806.0">travel2.domain.AdminFindAllResult</node>
+    <node x="26.0" y="166.0">travel2.service.Travel2Service</node>
+    <node x="809.0" y="406.0">travel2.domain.TripResponse</node>
+    <node x="290.0" y="406.0">travel2.service.Travel2ServiceImpl</node>
+    <node x="527.0" y="746.0">travel2.domain.GetTripAllDetailInfo</node>
+    <node x="273.0" y="166.0">travel2.domain.SeatRequest</node>
+    <node x="369.5" y="806.0">travel2.domain.GetTripsByRouteIdResult</node>
+    <node x="22.0" y="566.0">travel2.domain.ResultForTravel</node>
+    <node x="158.0" y="226.0">travel2.domain.QuerySoldTicket</node>
+    <node x="128.0" y="406.0">travel2.init.InitData</node>
+    <node x="215.0" y="346.0">travel2.domain.Route</node>
+    <node x="-122.0" y="226.0">travel2.domain.ResultSoldTicket</node>
+    <node x="660.5" y="-14.0">travel2.domain.QueryInfo</node>
+    <node x="451.5" y="346.0">travel2.domain.QueryForStationId</node>
+    <node x="682.0" y="406.0">travel2.domain.Trip</node>
+    <node x="227.5" y="746.0">travel2.domain.GetTrainTypeInformation</node>
+    <node x="-119.0" y="406.0">travel2.domain.TrainType</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="travel2.domain.TripResponse" target="travel2.domain.TripId" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="881.0" y="360.0" />
+      <point x="721.0" y="360.0" />
+      <point x="721.0" y="200.0" />
+      <point x="641.0" y="200.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel2.domain.AdminTrip" target="travel2.domain.Trip" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="201.0" y="480.0" />
+      <point x="661.0" y="480.0" />
+      <point x="661.0" y="380.0" />
+      <point x="721.0" y="380.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel2.domain.GetTripAllDetailResult" target="travel2.domain.Trip" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="701.0" y="500.0" />
+      <point x="661.0" y="500.0" />
+      <point x="661.0" y="380.0" />
+      <point x="721.0" y="380.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel2.service.Travel2ServiceImpl" target="travel2.repository.TripRepository" relationship="TO_ONE">
+      <point x="45.5" y="-14.0" />
+      <point x="426.5" y="320.0" />
+      <point x="541.0" y="320.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="travel2.domain.GetTrainTypeResult" target="travel2.domain.TrainType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-19.0" y="460.0" />
+      <point x="-59.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="travel2.service.Travel2ServiceImpl" target="travel2.service.Travel2Service" relationship="REALIZATION">
+      <point x="-45.5" y="-14.0" />
+      <point x="335.5" y="300.0" />
+      <point x="138.5" y="300.0" />
+      <point x="37.5" y="14.0" />
+    </edge>
+    <edge source="travel2.init.InitData" target="travel2.service.Travel2Service" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="181.0" y="320.0" />
+      <point x="61.0" y="320.0" />
+      <point x="61.0" y="220.0" />
+      <point x="63.5" y="220.0" />
+      <point x="-37.5" y="14.0" />
+    </edge>
+    <edge source="travel2.domain.AdminTrip" target="travel2.domain.Route" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="201.0" y="460.0" />
+      <point x="261.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="travel2.domain.TripId" target="travel2.domain.Type" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="travel2.domain.QueryForTravel" target="travel2.domain.Trip" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="581.0" y="540.0" />
+      <point x="661.0" y="540.0" />
+      <point x="661.0" y="380.0" />
+      <point x="721.0" y="380.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel2.domain.QueryTripResponsePackage" target="travel2.domain.TripResponse" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="841.0" y="540.0" />
+      <point x="781.0" y="540.0" />
+      <point x="781.0" y="380.0" />
+      <point x="881.0" y="380.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel2.domain.Trip" target="travel2.domain.TripId" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="721.0" y="200.0" />
+      <point x="641.0" y="200.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel2.domain.GetRouteResult" target="travel2.domain.Route" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="381.0" y="500.0" />
+      <point x="261.0" y="500.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="travel2.controller.Travel2Controller" target="travel2.service.Travel2Service" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="61.0" y="220.0" />
+      <point x="63.5" y="220.0" />
+      <point x="-37.5" y="14.0" />
+    </edge>
+    <edge source="travel2.domain.ResultForTravel" target="travel2.domain.TrainType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="101.0" y="540.0" />
+      <point x="-19.0" y="540.0" />
+      <point x="-19.0" y="460.0" />
+      <point x="-59.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="travel2.domain.GetTripAllDetailResult" target="travel2.domain.TripResponse" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="701.0" y="520.0" />
+      <point x="781.0" y="520.0" />
+      <point x="781.0" y="380.0" />
+      <point x="881.0" y="380.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel2.domain.AdminTrip" target="travel2.domain.TrainType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="201.0" y="500.0" />
+      <point x="-19.0" y="500.0" />
+      <point x="-19.0" y="460.0" />
+      <point x="-59.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="travel2.domain.AdminFindAllResult" target="travel2.domain.AdminTrip" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="201.0" y="720.0" />
+      <point x="281.0" y="720.0" />
+      <point x="281.0" y="600.0" />
+      <point x="201.0" y="600.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.880184331797235" showDependencies="true" x="431.5000000000001" y="420.00000000000006" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

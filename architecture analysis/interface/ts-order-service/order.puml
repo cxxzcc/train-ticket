@@ -1,0 +1,82 @@
+@startuml
+actor User
+participant "ts-order-service" as OrderService
+participant "ts-sso-service" as SsoService
+participant "ts-account-mongo" as AccountMongo
+
+== Get Order Info for Security ==
+User -> OrderService: GET /getOrderInfoForSecurity
+OrderService --> User: Return order info
+
+== Admin Add Order ==
+User -> OrderService: POST /adminAddOrder
+OrderService --> User: Return add result
+
+== Admin Update Order ==
+User -> OrderService: PUT /adminUpdate
+OrderService --> User: Return update result
+
+== Calculate Order ==
+User -> OrderService: POST /calculate
+OrderService --> User: Return calculation result
+
+== Create Order ==
+User -> OrderService: POST /create
+OrderService -> SsoService: POST /verifyLoginToken
+SsoService -> AccountMongo: Query login_user_list
+AccountMongo --> SsoService: Return user data
+SsoService --> OrderService: Return verification result
+OrderService --> User: Return create result
+
+== Delete Order ==
+User -> OrderService: DELETE /delete
+OrderService --> User: Return delete result
+
+== Find All Orders ==
+User -> OrderService: GET /findAll
+OrderService --> User: Return all orders
+
+== Get Order by ID ==
+User -> OrderService: GET /getById
+OrderService --> User: Return order details
+
+== Get Ticket List by Date and Trip ID ==
+User -> OrderService: GET /getTicketListByDateAndTripId
+OrderService --> User: Return ticket list
+
+== Modify Order Status ==
+User -> OrderService: PUT /modifyOrderStatus
+OrderService --> User: Return status update result
+
+== Pay Order ==
+User -> OrderService: POST /payOrder
+OrderService --> User: Return payment result
+
+== Calculate Price ==
+User -> OrderService: POST /price
+OrderService --> User: Return price result
+
+== Query Orders ==
+User -> OrderService: GET /query
+OrderService -> SsoService: POST /verifyLoginToken
+SsoService -> AccountMongo: Query login_user_list
+AccountMongo --> SsoService: Return user data
+SsoService --> OrderService: Return verification result
+OrderService --> User: Return query result
+
+== Query Orders for Refresh ==
+User -> OrderService: GET /queryForRefresh
+OrderService -> SsoService: POST /verifyLoginToken
+SsoService -> AccountMongo: Query login_user_list
+AccountMongo --> SsoService: Return user data
+SsoService --> OrderService: Return verification result
+OrderService --> User: Return refresh result
+
+== Update Order ==
+User -> OrderService: PUT /update
+OrderService -> SsoService: POST /verifyLoginToken
+SsoService -> AccountMongo: Query login_user_list
+AccountMongo --> SsoService: Return user data
+SsoService --> OrderService: Return verification result
+OrderService --> User: Return update result
+@enduml

@@ -1,0 +1,94 @@
+@startuml
+actor User
+participant "ts-inside-payment-service" as InsidePayment
+participant "ts-order-service" as OrderService
+participant "ts-order-other-service" as OrderOtherService
+participant "ts-payment-service" as PaymentService
+participant "ts-inside-payment-mongo" as InsidePaymentMongo
+participant "ts-order-mongo" as OrderMongo
+participant "ts-order-other-mongo" as OrderOtherMongo
+participant "ts-payment-mongo" as PaymentMongo
+
+== Pay ==
+User -> InsidePayment: POST /inside_payment/pay
+InsidePayment -> InsidePayment: Check tripId (G/D or other)
+alt tripId starts with "G" or "D"
+    InsidePayment -> OrderService: GET /order/getById
+    OrderService -> OrderMongo: Query orders
+    OrderMongo --> OrderService: Return order data
+    OrderService --> InsidePayment: Return order data
+else
+    InsidePayment -> OrderOtherService: GET /orderOther/getById
+    OrderOtherService -> OrderOtherMongo: Query orders
+    OrderOtherMongo --> OrderOtherService: Return order data
+    OrderOtherService --> InsidePayment: Return order data
+end
+InsidePayment -> InsidePayment: Check payment status
+InsidePayment -> InsidePaymentMongo: Query payment
+InsidePaymentMongo --> InsidePayment: Return payment data
+alt totalExpand > money
+    InsidePayment -> PaymentService: POST /payment/pay
+    PaymentService -> PaymentMongo: Update payment
+    PaymentMongo --> PaymentService: Return payment result
+    PaymentService --> InsidePayment: Return payment result
+end
+InsidePayment -> InsidePayment: Set order status
+alt tripId starts with "G" or "D"
+    InsidePayment -> OrderService: POST /order/modifyOrderStatus
+    OrderService -> OrderMongo: Update orders
+    OrderMongo --> OrderService: Return update result
+    OrderService --> InsidePayment: Return update result
+else
+    InsidePayment -> OrderOtherService: POST /orderOther/modifyOrderStatus
+    OrderOtherService -> OrderOtherMongo: Update orders
+    OrderOtherMongo --> OrderOtherService: Return update result
+    OrderOtherService --> InsidePayment: Return update result
+end
+InsidePayment --> User: Return payment result
+
+== Create Account ==
+User -> InsidePayment: POST /inside_payment/createAccount
+InsidePayment -> InsidePaymentMongo: Add payment
+InsidePaymentMongo --> InsidePayment: Return result
+InsidePayment --> User: Return result
+
+== Add Money ==
+User -> InsidePayment: POST /inside_payment/addMoney
+InsidePayment -> InsidePaymentMongo: Add money
+InsidePaymentMongo --> InsidePayment: Return result
+InsidePayment --> User: Return result
+
+== Query Payment ==
+User -> InsidePayment: GET /inside_payment/queryPayment
+InsidePayment -> InsidePaymentMongo: Query payment
+InsidePaymentMongo --> InsidePayment: Return payment data
+InsidePayment --> User: Return payment data
+
+== Query Account ==
+User -> InsidePayment: GET /inside_payment/queryAccount
+InsidePayment -> InsidePaymentMongo: Query payment and addMoney
+InsidePaymentMongo --> InsidePayment: Return account data
+InsidePayment --> User: Return account data
+
+== Draw Back ==
+User -> InsidePayment: POST /inside_payment/drawBack
+InsidePayment -> InsidePaymentMongo: Update addMoney
+InsidePaymentMongo --> InsidePayment: Return result
+InsidePayment --> User: Return result
+
+== Pay Difference ==
+User -> InsidePayment: POST /inside_payment/payDifference
+InsidePayment -> InsidePaymentMongo: Update addMoney and payment
+InsidePayment -> PaymentService: POST /payment/pay
+PaymentService -> PaymentMongo: Update payment
+PaymentMongo --> PaymentService: Return payment result
+PaymentService --> InsidePayment: Return payment result
+InsidePaymentMongo --> InsidePayment: Return result
+InsidePayment --> User: Return result
+
+== Query Add Money ==
+User -> InsidePayment: GET /inside_payment/queryAddMoney
+InsidePayment -> InsidePaymentMongo: Query addMoney
+InsidePaymentMongo --> InsidePayment: Return addMoney data
+InsidePayment --> User: Return addMoney data
+@enduml

@@ -1,0 +1,129 @@
+@startuml
+actor User
+participant "ts-rebook-service" as RebookService
+participant "ts-order-service" as OrderService
+participant "ts-order-other-service" as OrderOtherService
+participant "ts-travel-service" as TravelService
+participant "ts-travel2-service" as Travel2Service
+participant "ts-station-service" as StationService
+participant "ts-inside-payment-service" as InsidePayment
+participant "ts-payment-service" as PaymentService
+participant "ts-seat-service" as SeatService
+database "ts-order-mongo" as OrderDB
+database "ts-order-other-mongo" as OrderOtherDB
+database "ts-station-mongo" as StationDB
+database "ts-inside-payment-mongo" as InsidePaymentDB
+database "ts-payment-mongo" as PaymentDB
+
+== Rebook/PayDifference Process ==
+
+User -> RebookService: POST /rebook/payDifference
+activate RebookService
+
+RebookService -> RebookService: getOrderByRebookInfo
+RebookService -> OrderService: GET /order/getById
+OrderService -> OrderDB: Query orders
+OrderDB --> OrderService: Order data
+OrderService --> RebookService: Return order
+
+RebookService -> OrderOtherService: GET /orderOther/getById
+OrderOtherService -> OrderOtherDB: Query orders
+OrderOtherDB --> OrderOtherService: Order data
+OrderOtherService --> RebookService: Return order
+
+RebookService -> RebookService: getTripAllDetailInformation
+RebookService -> TravelService: GET /travel/getTripAllDetailInfo
+TravelService --> RebookService: Trip details
+RebookService -> Travel2Service: GET /travel2/getTripAllDetailInfo
+Travel2Service --> RebookService: Trip details
+
+RebookService -> StationService: GET /station/queryById
+StationService -> StationDB: Query station
+StationDB --> StationService: Station data
+StationService --> RebookService: Station name
+
+RebookService -> InsidePayment: POST /inside_payment/payDifference
+InsidePayment -> InsidePaymentDB: Update addMoney
+InsidePaymentDB --> InsidePayment: Payment confirmed
+InsidePayment -> PaymentService: POST /payment/pay
+PaymentService -> PaymentDB: Create payment
+PaymentDB --> PaymentService: Payment record
+PaymentService --> InsidePayment: Payment result
+InsidePayment --> RebookService: Payment confirmation
+
+RebookService -> RebookService: updateOrder
+RebookService -> SeatService: GET /seat/getSeat
+SeatService --> RebookService: Seat information
+
+RebookService -> OrderService: POST /order/update
+OrderService -> OrderDB: Update order
+OrderDB --> OrderService: Update result
+OrderService --> RebookService: Update confirmation
+
+RebookService -> OrderOtherService: POST /orderOther/update
+OrderOtherService -> OrderOtherDB: Update order
+OrderOtherDB --> OrderOtherService: Update result
+OrderOtherService --> RebookService: Update confirmation
+
+RebookService --> User: Rebooking complete
+deactivate RebookService
+
+== Rebook/Rebook Process ==
+
+User -> RebookService: POST /rebook/rebook
+activate RebookService
+
+RebookService -> RebookService: getOrderByRebookInfo
+RebookService -> OrderService: GET /order/getById
+OrderService -> OrderDB: Query orders
+OrderDB --> OrderService: Order data
+OrderService --> RebookService: Return order
+
+RebookService -> OrderOtherService: GET /orderOther/getById
+OrderOtherService -> OrderOtherDB: Query orders
+OrderOtherDB --> OrderOtherService: Order data
+OrderOtherService --> RebookService: Return order
+
+RebookService -> RebookService: getTripAllDetailInformation
+RebookService -> TravelService: GET /travel/getTripAllDetailInfo
+TravelService --> RebookService: Trip details
+RebookService -> Travel2Service: GET /travel2/getTripAllDetailInfo
+Travel2Service --> RebookService: Trip details
+
+RebookService -> StationService: GET /station/queryById
+StationService -> StationDB: Query station
+StationDB --> StationService: Station data
+StationService --> RebookService: Station name
+
+RebookService -> InsidePayment: POST /inside_payment/drawBack
+InsidePayment -> InsidePaymentDB: Update addMoney
+InsidePaymentDB --> InsidePayment: Drawback confirmed
+
+RebookService -> RebookService: updateOrder
+RebookService -> SeatService: GET /seat/getSeat
+SeatService --> RebookService: Seat information
+
+RebookService -> OrderService: POST /order/delete
+OrderService -> OrderDB: Delete order
+OrderDB --> OrderService: Delete result
+OrderService --> RebookService: Delete confirmation
+
+RebookService -> OrderOtherService: POST /orderOther/delete
+OrderOtherService -> OrderOtherDB: Delete order
+OrderOtherDB --> OrderOtherService: Delete result
+OrderOtherService --> RebookService: Delete confirmation
+
+RebookService -> OrderService: POST /order/create
+OrderService -> OrderDB: Create order
+OrderDB --> OrderService: New order
+OrderService --> RebookService: Order created
+
+RebookService -> OrderOtherService: POST /orderOther/create
+OrderOtherService -> OrderOtherDB: Create order
+OrderOtherDB --> OrderOtherService: New order
+OrderOtherService --> RebookService: Order created
+
+RebookService --> User: Rebook successful
+deactivate RebookService
+
+@enduml

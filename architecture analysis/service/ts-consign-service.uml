@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-consign-service</OriginalElement>
+  <nodes>
+    <node x="-96.0" y="406.0">consign.service.ConsignService</node>
+    <node x="21.0" y="126.0">consign.domain.GetPriceDomain</node>
+    <node x="-106.5" y="586.0">consign.controller.ConsignController</node>
+    <node x="-111.0" y="186.0">consign.ConsignApplication</node>
+    <node x="-116.0" y="266.0">consign.domain.InsertConsignRecordResult</node>
+    <node x="-15.5" y="-14.0">consign.domain.ConsignRecord</node>
+    <node x="8.5" y="526.0">consign.service.ConsignServiceImpl</node>
+    <node x="-119.0" y="46.0">consign.domain.ConsignRequest</node>
+    <node x="11.5" y="346.0">consign.repository.ConsignRepository</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="consign.service.ConsignServiceImpl" target="consign.repository.ConsignRepository" relationship="TO_ONE">
+      <point x="47.25" y="-14.0" />
+      <point x="150.25" y="500.0" />
+      <point x="103.0" y="500.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="consign.controller.ConsignController" target="consign.service.ConsignService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-17.0" y="560.0" />
+      <point x="-56.5" y="560.0" />
+      <point x="-39.5" y="14.0" />
+    </edge>
+    <edge source="consign.service.ConsignServiceImpl" target="consign.service.ConsignService" relationship="REALIZATION">
+      <point x="-47.25" y="-14.0" />
+      <point x="55.75" y="500.0" />
+      <point x="22.5" y="500.0" />
+      <point x="39.5" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="1.1790123456790123" showDependencies="true" x="49.5" y="310.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

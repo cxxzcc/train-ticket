@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-execute-service</OriginalElement>
+  <nodes>
+    <node x="12.0" y="206.0">execute.ExecuteApplication</node>
+    <node x="67.5" y="346.0">execute.serivce.ExecuteService</node>
+    <node x="35.0" y="526.0">execute.controller.ExecuteControlller</node>
+    <node x="-110.0" y="406.0">execute.domain.TicketExecuteResult</node>
+    <node x="65.5" y="846.0">execute.domain.GetOrderResult</node>
+    <node x="-2.0" y="666.0">execute.domain.ModifyOrderStatusInfo</node>
+    <node x="-102.5" y="266.0">execute.domain.TicketExecuteInfo</node>
+    <node x="-88.0" y="586.0">execute.serivce.ExecuteServiceImpl</node>
+    <node x="-114.0" y="-14.0">execute.domain.SeatClass</node>
+    <node x="-2.5" y="66.0">execute.domain.GetOrderByIdInfo</node>
+    <node x="-81.0" y="726.0">execute.domain.Order</node>
+    <node x="-109.5" y="906.0">execute.domain.ModifyOrderStatusResult</node>
+    <node x="-103.0" y="126.0">execute.domain.OrderStatus</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="execute.domain.GetOrderResult" target="execute.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="144.0" y="820.0" />
+      <point x="4.0" y="820.0" />
+      <point x="4.0" y="780.0" />
+      <point x="-36.0" y="780.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="execute.domain.ModifyOrderStatusResult" target="execute.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="4.0" y="780.0" />
+      <point x="-36.0" y="780.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="execute.serivce.ExecuteServiceImpl" target="execute.serivce.ExecuteService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="4.0" y="500.0" />
+      <point x="105.75" y="500.0" />
+      <point x="-38.25" y="14.0" />
+    </edge>
+    <edge source="execute.controller.ExecuteControlller" target="execute.serivce.ExecuteService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="124.0" y="500.0" />
+      <point x="182.25" y="500.0" />
+      <point x="38.25" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.7995867768595041" showDependencies="true" x="64.5" y="470.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

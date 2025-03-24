@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-admin-order-service</OriginalElement>
+  <nodes>
+    <node x="507.5" y="246.0">adminorder.domain.bean.DeleteOrderInfo</node>
+    <node x="-76.0" y="306.0">adminorder.domain.bean.Order</node>
+    <node x="21.5" y="426.0">adminorder.domain.request.AddOrderRequest</node>
+    <node x="130.5" y="486.0">adminorder.domain.request.UpdateOrderRequest</node>
+    <node x="422.0" y="306.0">adminorder.domain.bean.OrderStatus</node>
+    <node x="16.0" y="-14.0">adminorder.service.AdminOrderService</node>
+    <node x="261.0" y="426.0">adminorder.domain.response.QueryOrderResult</node>
+    <node x="377.0" y="486.0">adminorder.domain.response.UpdateOrderResult</node>
+    <node x="-109.0" y="166.0">adminorder.domain.bean.SeatClass</node>
+    <node x="273.5" y="246.0">adminorder.domain.request.DeleteOrderRequest</node>
+    <node x="120.5" y="306.0">adminorder.AdminOrderApplication</node>
+    <node x="100.0" y="166.0">adminorder.service.AdminOrderServiceImpl</node>
+    <node x="-34.5" y="106.0">adminorder.controller.AdminOrderController</node>
+    <node x="0.0" y="246.0">adminorder.domain.response.DeleteOrderResult</node>
+    <node x="508.0" y="426.0">adminorder.domain.response.AddOrderResult</node>
+    <node x="-98.5" y="486.0">adminorder.domain.response.GetAllOrderResult</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="adminorder.domain.response.GetAllOrderResult" target="adminorder.domain.bean.Order" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="-11.0" y="360.0" />
+      <point x="-31.0" y="360.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminorder.domain.request.UpdateOrderRequest" target="adminorder.domain.bean.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="229.0" y="400.0" />
+      <point x="-11.0" y="400.0" />
+      <point x="-11.0" y="360.0" />
+      <point x="-31.0" y="360.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminorder.domain.response.UpdateOrderResult" target="adminorder.domain.bean.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="469.0" y="400.0" />
+      <point x="-11.0" y="400.0" />
+      <point x="-11.0" y="360.0" />
+      <point x="-31.0" y="360.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminorder.service.AdminOrderServiceImpl" target="adminorder.service.AdminOrderService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="209.0" y="80.0" />
+      <point x="155.5" y="80.0" />
+      <point x="46.5" y="14.0" />
+    </edge>
+    <edge source="adminorder.controller.AdminOrderController" target="adminorder.service.AdminOrderService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="69.0" y="80.0" />
+      <point x="62.5" y="80.0" />
+      <point x="-46.5" y="14.0" />
+    </edge>
+    <edge source="adminorder.domain.request.AddOrderRequest" target="adminorder.domain.bean.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="109.0" y="400.0" />
+      <point x="-11.0" y="400.0" />
+      <point x="-11.0" y="360.0" />
+      <point x="-31.0" y="360.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminorder.domain.response.QueryOrderResult" target="adminorder.domain.bean.Order" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="349.0" y="400.0" />
+      <point x="-11.0" y="400.0" />
+      <point x="-11.0" y="360.0" />
+      <point x="-31.0" y="360.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminorder.domain.response.AddOrderResult" target="adminorder.domain.bean.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="589.0" y="400.0" />
+      <point x="-11.0" y="400.0" />
+      <point x="-11.0" y="360.0" />
+      <point x="-31.0" y="360.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.9890000000000001" showDependencies="true" x="314.01251263902935" y="246.11602628918104" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

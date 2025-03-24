@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-admin-travel-service</OriginalElement>
+  <nodes>
+    <node x="7.5" y="846.0">admintravel.AdminTravelApplication</node>
+    <node x="51.5" y="166.0">admintravel.domain.bean.TripId</node>
+    <node x="115.0" y="526.0">admintravel.domain.bean.AdminTrip</node>
+    <node x="37.0" y="406.0">admintravel.domain.bean.TrainType</node>
+    <node x="131.0" y="346.0">admintravel.domain.bean.Route</node>
+    <node x="-119.5" y="226.0">admintravel.domain.request.DeleteTravelRequest</node>
+    <node x="-117.0" y="906.0">admintravel.service.AdminTravelService</node>
+    <node x="-82.0" y="406.0">admintravel.domain.bean.Trip</node>
+    <node x="7.0" y="1026.0">admintravel.service.AdminTravelServiceImpl</node>
+    <node x="-111.0" y="586.0">admintravel.domain.request.AddAndModifyTravelRequest</node>
+    <node x="-79.0" y="46.0">admintravel.domain.response.ResponseBean</node>
+    <node x="43.0" y="706.0">admintravel.domain.response.AdminFindAllResult</node>
+    <node x="-83.0" y="766.0">admintravel.domain.bean.GetTrainTypeRequest</node>
+    <node x="55.0" y="-14.0">admintravel.domain.bean.Type</node>
+    <node x="-127.5" y="1086.0">admintravel.controller.AdminTravelController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="admintravel.controller.AdminTravelController" target="admintravel.service.AdminTravelService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-23.0" y="1060.0" />
+      <point x="-70.0" y="1060.0" />
+      <point x="-47.0" y="14.0" />
+    </edge>
+    <edge source="admintravel.domain.bean.AdminTrip" target="admintravel.domain.bean.Trip" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="177.0" y="500.0" />
+      <point x="97.0" y="500.0" />
+      <point x="97.0" y="460.0" />
+      <point x="17.0" y="460.0" />
+      <point x="17.0" y="380.0" />
+      <point x="-43.0" y="380.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="admintravel.service.AdminTravelServiceImpl" target="admintravel.service.AdminTravelService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="117.0" y="1000.0" />
+      <point x="24.0" y="1000.0" />
+      <point x="47.0" y="14.0" />
+    </edge>
+    <edge source="admintravel.domain.bean.AdminTrip" target="admintravel.domain.bean.TrainType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="177.0" y="500.0" />
+      <point x="97.0" y="500.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="admintravel.domain.bean.AdminTrip" target="admintravel.domain.bean.Route" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="177.0" y="500.0" />
+      <point x="97.0" y="500.0" />
+      <point x="97.0" y="460.0" />
+      <point x="177.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="admintravel.domain.response.AdminFindAllResult" target="admintravel.domain.bean.AdminTrip" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="137.0" y="680.0" />
+      <point x="257.0" y="680.0" />
+      <point x="257.0" y="480.0" />
+      <point x="177.0" y="480.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="admintravel.domain.bean.TripId" target="admintravel.domain.bean.Type" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="admintravel.domain.bean.Trip" target="admintravel.domain.bean.TripId" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-43.0" y="320.0" />
+      <point x="177.0" y="320.0" />
+      <point x="177.0" y="140.0" />
+      <point x="97.0" y="140.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.6742160278745645" showDependencies="true" x="74.5" y="560.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

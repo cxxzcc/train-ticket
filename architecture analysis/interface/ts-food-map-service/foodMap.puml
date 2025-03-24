@@ -1,0 +1,29 @@
+@startuml
+actor User
+participant "ts-food-map-service" as FoodMapService
+participant "ts-food-map-mongo" as Mongo
+
+== Get All Food Stores ==
+User -> FoodMapService: GET /foodmap/getAllFoodStores
+FoodMapService -> Mongo: Query stores collection
+Mongo --> FoodMapService: Return stores data
+FoodMapService --> User: Return stores data
+
+== Get All Train Food ==
+User -> FoodMapService: GET /foodmap/getAllTrainFood
+FoodMapService -> Mongo: Query train food collection
+Mongo --> FoodMapService: Return train food data
+FoodMapService --> User: Return train food data
+
+== Get Food Stores of Station ==
+User -> FoodMapService: GET /foodmap/getFoodStoresOfStation
+FoodMapService -> Mongo: Query stores for specific station
+Mongo --> FoodMapService: Return station stores data
+FoodMapService --> User: Return station stores data
+
+== Get Train Food of Trip ==
+User -> FoodMapService: GET /foodmap/getTrainFoodOfTrip
+FoodMapService -> Mongo: Query train food for specific trip
+Mongo --> FoodMapService: Return trip food data
+FoodMapService --> User: Return trip food data
+@enduml

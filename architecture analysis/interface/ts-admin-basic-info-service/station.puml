@@ -1,0 +1,38 @@
+@startuml
+actor User
+participant "ts-admin-basic-info-service" as AdminService
+participant "ts-station-service" as StationService
+participant "ts-station-mongo" as Mongo
+
+== getAllStations ==
+User -> AdminService: GET /adminbasic/getAllStations/{id}
+AdminService -> StationService: GET /station/query
+StationService -> Mongo: Query station collection
+Mongo --> StationService: Return station data
+StationService --> AdminService: Return station data
+AdminService --> User: Return station data
+
+== deleteStation ==
+User -> AdminService: DELETE /adminbasic/deleteStation
+AdminService -> StationService: DELETE /station/delete
+StationService -> Mongo: Delete station data
+Mongo --> StationService: Return delete result
+StationService --> AdminService: Return delete result
+AdminService --> User: Return delete result
+
+== modifyStation ==
+User -> AdminService: PUT /adminbasic/modifyStation
+AdminService -> StationService: PUT /station/update
+StationService -> Mongo: Update station data
+Mongo --> StationService: Return update result
+StationService --> AdminService: Return update result
+AdminService --> User: Return update result
+
+== addStation ==
+User -> AdminService: POST /adminbasic/addStation
+AdminService -> StationService: POST /station/create
+StationService -> Mongo: Insert station data
+Mongo --> StationService: Return insert result
+StationService --> AdminService: Return insert result
+AdminService --> User: Return insert result
+@enduml

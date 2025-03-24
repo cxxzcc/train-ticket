@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-login-service</OriginalElement>
+  <nodes>
+    <node x="114.5" y="366.0">login.domain.Gender</node>
+    <node x="-13.0" y="306.0">login.domain.PutLoginResult</node>
+    <node x="31.0" y="626.0">login.service.AccountLoginServiceImpl</node>
+    <node x="-104.0" y="686.0">login.controller.AccountLoginController</node>
+    <node x="-114.0" y="366.0">login.domain.DocumentType</node>
+    <node x="80.0" y="446.0">login.LoginApplication</node>
+    <node x="101.0" y="226.0">login.domain.LogoutInfo</node>
+    <node x="83.5" y="46.0">login.util.CookieUtil</node>
+    <node x="11.0" y="-14.0">login.domain.Account</node>
+    <node x="-53.5" y="506.0">login.service.AccountLoginService</node>
+    <node x="-1.0" y="166.0">login.domain.LoginResult</node>
+    <node x="-106.5" y="226.0">login.domain.LogoutResult</node>
+    <node x="-74.0" y="46.0">login.domain.LoginInfo</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="login.service.AccountLoginServiceImpl" target="login.service.AccountLoginService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="145.0" y="600.0" />
+      <point x="94.25" y="600.0" />
+      <point x="49.25" y="14.0" />
+    </edge>
+    <edge source="login.domain.LoginResult" target="login.domain.Account" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="login.controller.AccountLoginController" target="login.service.AccountLoginService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="5.0" y="660.0" />
+      <point x="-4.25" y="660.0" />
+      <point x="-49.25" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="1.0213903743315509" showDependencies="true" x="82.5" y="360.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

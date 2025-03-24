@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-sso-service</OriginalElement>
+  <nodes>
+    <node x="421.5" y="506.0">sso.domain.LoginAccountValue</node>
+    <node x="417.5" y="686.0">sso.domain.GetLoginAccountList</node>
+    <node x="-119.0" y="686.0">sso.domain.Account</node>
+    <node x="13.5" y="446.0">sso.controller.AccountSsoController</node>
+    <node x="223.5" y="326.0">sso.repository.AccountRepository</node>
+    <node x="308.0" y="-14.0">sso.domain.RegisterInfo</node>
+    <node x="299.5" y="186.0">sso.domain.GetAccountByIdInfo</node>
+    <node x="64.0" y="266.0">sso.service.AccountSsoService</node>
+    <node x="-126.0" y="326.0">sso.domain.ModifyAccountResult</node>
+    <node x="-87.0" y="506.0">sso.domain.AdminLoginInfo</node>
+    <node x="181.5" y="126.0">sso.domain.ModifyAccountInfo</node>
+    <node x="182.0" y="506.0">sso.init.initData</node>
+    <node x="208.0" y="46.0">sso.domain.VerifyResult</node>
+    <node x="110.5" y="-14.0">sso.domain.LoginValue</node>
+    <node x="344.5" y="626.0">sso.domain.Gender</node>
+    <node x="29.0" y="806.0">sso.domain.LoginResult</node>
+    <node x="83.5" y="186.0">sso.domain.LogoutResult</node>
+    <node x="115.0" y="866.0">sso.domain.FindAllAccountResult</node>
+    <node x="237.0" y="806.0">sso.domain.DeleteAccountResult</node>
+    <node x="346.0" y="266.0">sso.repository.LoginUserListRepository</node>
+    <node x="268.0" y="446.0">sso.service.AccountSsoServiceImpl</node>
+    <node x="31.0" y="46.0">sso.domain.LogoutInfo</node>
+    <node x="-41.0" y="-14.0">sso.domain.Contacts</node>
+    <node x="380.5" y="866.0">sso.domain.RegisterResult</node>
+    <node x="-128.0" y="866.0">sso.domain.GetAccountByIdResult</node>
+    <node x="-24.0" y="126.0">sso.domain.DocumentType</node>
+    <node x="148.5" y="686.0">sso.AccountSsoApplication</node>
+    <node x="-33.0" y="626.0">sso.domain.AdminDeleteAccountRequest</node>
+    <node x="-124.0" y="46.0">sso.domain.LoginInfo</node>
+    <node x="-123.0" y="186.0">sso.domain.PutLoginResult</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="sso.init.initData" target="sso.service.AccountSsoService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="235.0" y="420.0" />
+      <point x="115.0" y="420.0" />
+      <point x="115.0" y="320.0" />
+      <point x="109.5" y="320.0" />
+      <point x="-45.5" y="14.0" />
+    </edge>
+    <edge source="sso.service.AccountSsoServiceImpl" target="sso.repository.AccountRepository" relationship="TO_ONE">
+      <point x="53.5" y="-14.0" />
+      <point x="428.5" y="420.0" />
+      <point x="435.0" y="420.0" />
+      <point x="435.0" y="380.0" />
+      <point x="315.0" y="380.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="sso.domain.LoginResult" target="sso.domain.Account" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="95.0" y="780.0" />
+      <point x="-25.0" y="780.0" />
+      <point x="-25.0" y="740.0" />
+      <point x="-65.0" y="740.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="sso.domain.RegisterResult" target="sso.domain.Account" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="455.0" y="780.0" />
+      <point x="-25.0" y="780.0" />
+      <point x="-25.0" y="740.0" />
+      <point x="-65.0" y="740.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="sso.domain.GetLoginAccountList" target="sso.domain.LoginAccountValue" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="sso.controller.AccountSsoController" target="sso.service.AccountSsoService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="115.0" y="320.0" />
+      <point x="109.5" y="320.0" />
+      <point x="-45.5" y="14.0" />
+    </edge>
+    <edge source="sso.domain.GetAccountByIdResult" target="sso.domain.Account" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-25.0" y="740.0" />
+      <point x="-65.0" y="740.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="sso.domain.FindAllAccountResult" target="sso.domain.Account" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="215.0" y="780.0" />
+      <point x="-25.0" y="780.0" />
+      <point x="-25.0" y="740.0" />
+      <point x="-65.0" y="740.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="sso.service.AccountSsoServiceImpl" target="sso.service.AccountSsoService" relationship="REALIZATION">
+      <point x="-53.5" y="-14.0" />
+      <point x="321.5" y="400.0" />
+      <point x="200.5" y="400.0" />
+      <point x="45.5" y="14.0" />
+    </edge>
+    <edge source="sso.service.AccountSsoServiceImpl" target="sso.repository.LoginUserListRepository" relationship="TO_ONE">
+      <point x="53.5" y="-14.0" />
+      <point x="428.5" y="420.0" />
+      <point x="435.0" y="420.0" />
+      <point x="435.0" y="380.0" />
+      <point x="455.0" y="380.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="sso.domain.DeleteAccountResult" target="sso.domain.Account" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="335.0" y="780.0" />
+      <point x="-25.0" y="780.0" />
+      <point x="-25.0" y="740.0" />
+      <point x="-65.0" y="740.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.8232758620689655" showDependencies="true" x="252.50000000000006" y="450.00000000000006" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

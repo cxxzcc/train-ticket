@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-order-other-service</OriginalElement>
+  <nodes>
+    <node x="1314.0" y="166.0">other.domain.SeatRequest</node>
+    <node x="39.0" y="486.0">other.domain.OrderAlterResult</node>
+    <node x="1170.0" y="366.0">other.domain.GetOrderInfoForSecurityResult</node>
+    <node x="1209.0" y="226.0">other.domain.LeftTicketInfo</node>
+    <node x="141.0" y="546.0">other.domain.AddOrderResult</node>
+    <node x="1100.5" y="166.0">other.domain.DeleteOrderInfo</node>
+    <node x="1015.0" y="226.0">other.domain.OrderStatus</node>
+    <node x="913.0" y="166.0">other.domain.SeatNumber</node>
+    <node x="-11.0" y="166.0">other.init.InitData</node>
+    <node x="243.5" y="486.0">other.domain.GetOrderResult</node>
+    <node x="1034.5" y="306.0">other.domain.CalculateSoldTicketInfo</node>
+    <node x="340.5" y="546.0">other.domain.CreateOrderInfo</node>
+    <node x="452.0" y="486.0">other.domain.CancelOrderResult</node>
+    <node x="608.0" y="166.0">other.domain.GetOrderPrice</node>
+    <node x="896.0" y="366.0">other.domain.ModifyOrderStatusInfo</node>
+    <node x="-63.0" y="366.0">other.domain.Order</node>
+    <node x="499.5" y="226.0">other.domain.CancelOrderInfo</node>
+    <node x="751.5" y="306.0">other.domain.GetOrderInfoForSecurity</node>
+    <node x="362.0" y="166.0">other.controller.OrderOtherController</node>
+    <node x="607.0" y="366.0">other.domain.CalculateSoldTicketResult</node>
+    <node x="260.5" y="226.0">other.domain.QueryByIdBatch</node>
+    <node x="574.0" y="546.0">other.domain.QueryOrderResult</node>
+    <node x="721.5" y="-14.0">other.domain.QueryInfo</node>
+    <node x="495.5" y="306.0">other.domain.GetOrderByIdInfo</node>
+    <node x="703.0" y="486.0">other.domain.PayOrderResult</node>
+    <node x="359.0" y="366.0">other.domain.QueryByIdBatchResult</node>
+    <node x="815.5" y="546.0">other.domain.ChangeOrderInfo</node>
+    <node x="946.5" y="486.0">other.domain.OrderAlterInfo</node>
+    <node x="175.0" y="166.0">other.domain.VerifyResult</node>
+    <node x="237.0" y="306.0">other.OrderOtherApplication</node>
+    <node x="736.5" y="226.0">other.service.OrderOtherServiceImpl</node>
+    <node x="133.0" y="366.0">other.domain.DeleteOrderResult</node>
+    <node x="412.0" y="-14.0">other.service.OrderOtherService</node>
+    <node x="1050.0" y="546.0">other.domain.UpdateOrderResult</node>
+    <node x="799.5" y="46.0">other.repository.OrderOtherRepository</node>
+    <node x="642.0" y="46.0">other.domain.TrainType</node>
+    <node x="1168.5" y="486.0">other.domain.ChangeOrderResult</node>
+    <node x="1236.0" y="-14.0">other.domain.Ticket</node>
+    <node x="7.0" y="306.0">other.domain.GetOrderPriceResult</node>
+    <node x="324.0" y="46.0">other.domain.SeatClass</node>
+    <node x="70.0" y="226.0">other.domain.TrainNumber</node>
+    <node x="1293.0" y="546.0">other.domain.CreateOrderResult</node>
+    <node x="-129.5" y="226.0">other.domain.PayOrderInfo</node>
+    <node x="-131.5" y="546.0">other.domain.ModifyOrderStatusResult</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="other.domain.ChangeOrderInfo" target="other.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="902.0" y="460.0" />
+      <point x="-18.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.domain.QueryOrderResult" target="other.domain.Order" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="662.0" y="460.0" />
+      <point x="-18.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.domain.CancelOrderResult" target="other.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="542.0" y="460.0" />
+      <point x="-18.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.domain.ChangeOrderResult" target="other.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="1262.0" y="460.0" />
+      <point x="-18.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.domain.OrderAlterInfo" target="other.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="1022.0" y="460.0" />
+      <point x="-18.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.service.OrderOtherServiceImpl" target="other.service.OrderOtherService" relationship="REALIZATION">
+      <point x="-52.75" y="-14.0" />
+      <point x="789.25" y="140.0" />
+      <point x="547.0" y="140.0" />
+      <point x="45.0" y="14.0" />
+    </edge>
+    <edge source="other.domain.CreateOrderInfo" target="other.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="422.0" y="460.0" />
+      <point x="-18.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.domain.LeftTicketInfo" target="other.domain.Ticket" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.controller.OrderOtherController" target="other.service.OrderOtherService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="462.0" y="40.0" />
+      <point x="457.0" y="40.0" />
+      <point x="-45.0" y="14.0" />
+    </edge>
+    <edge source="other.domain.GetOrderResult" target="other.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="322.0" y="460.0" />
+      <point x="-18.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.domain.UpdateOrderResult" target="other.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="1142.0" y="460.0" />
+      <point x="-18.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.domain.OrderAlterResult" target="other.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="122.0" y="460.0" />
+      <point x="-18.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.init.InitData" target="other.service.OrderOtherService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="42.0" y="140.0" />
+      <point x="462.0" y="140.0" />
+      <point x="462.0" y="40.0" />
+      <point x="457.0" y="40.0" />
+      <point x="-45.0" y="14.0" />
+    </edge>
+    <edge source="other.domain.ModifyOrderStatusResult" target="other.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.service.OrderOtherServiceImpl" target="other.repository.OrderOtherRepository" relationship="TO_ONE">
+      <point x="52.75" y="-14.0" />
+      <point x="894.75" y="140.0" />
+      <point x="902.0" y="140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.domain.CreateOrderResult" target="other.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="1382.0" y="460.0" />
+      <point x="-18.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.domain.PayOrderResult" target="other.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="782.0" y="460.0" />
+      <point x="-18.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="other.domain.AddOrderResult" target="other.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="222.0" y="460.0" />
+      <point x="-18.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.6093653727664818" showDependencies="true" x="679.5" y="290.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

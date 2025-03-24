@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-food-service</OriginalElement>
+  <nodes>
+    <node x="463.0" y="306.0">foodsearch.service.FoodService</node>
+    <node x="129.5" y="486.0">foodsearch.domain.FoodStore</node>
+    <node x="88.0" y="166.0">foodsearch.FoodApplication</node>
+    <node x="248.5" y="746.0">foodsearch.domain.UpdateFoodOrderInfo</node>
+    <node x="303.0" y="606.0">foodsearch.domain.GetAllFoodOfTripResult</node>
+    <node x="19.5" y="246.0">foodsearch.domain.AddFoodOrderInfo</node>
+    <node x="130.5" y="806.0">foodsearch.domain.GetAllFoodOfTripInfo</node>
+    <node x="473.0" y="486.0">foodsearch.controller.FoodController</node>
+    <node x="6.5" y="106.0">foodsearch.domain.QueryForId</node>
+    <node x="310.5" y="246.0">foodsearch.repository.FoodOrderRepository</node>
+    <node x="-108.0" y="166.0">foodsearch.domain.GetRouteResult</node>
+    <node x="48.0" y="746.0">foodsearch.domain.FoodOrder</node>
+    <node x="1.0" y="986.0">foodsearch.domain.UpdateFoodOrderResult</node>
+    <node x="412.0" y="926.0">foodsearch.domain.AddFoodOrderResult</node>
+    <node x="21.0" y="606.0">foodsearch.domain.GetFoodStoresListResult</node>
+    <node x="294.0" y="986.0">foodsearch.domain.FindByOrderIdResult</node>
+    <node x="-75.0" y="-14.0">foodsearch.domain.Route</node>
+    <node x="188.0" y="306.0">foodsearch.domain.Food</node>
+    <node x="165.0" y="666.0">foodsearch.domain.GetTrainFoodListResult</node>
+    <node x="-105.0" y="306.0">foodsearch.domain.QueryTrainFoodInfo</node>
+    <node x="-109.0" y="486.0">foodsearch.domain.QueryFoodStoresInfo</node>
+    <node x="367.5" y="426.0">foodsearch.service.FoodServiceImpl</node>
+    <node x="-99.0" y="666.0">foodsearch.domain.FindByOrderIdInfo</node>
+    <node x="143.0" y="926.0">foodsearch.domain.CancelFoodOrderResult</node>
+    <node x="290.0" y="486.0">foodsearch.domain.TrainFood</node>
+    <node x="-109.5" y="806.0">foodsearch.domain.CancelFoodOrderInfo</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="foodsearch.domain.GetFoodStoresListResult" target="foodsearch.domain.FoodStore" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="131.0" y="580.0" />
+      <point x="111.0" y="580.0" />
+      <point x="111.0" y="460.0" />
+      <point x="191.0" y="460.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="foodsearch.domain.GetRouteResult" target="foodsearch.domain.Route" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="foodsearch.domain.GetTrainFoodListResult" target="foodsearch.domain.TrainFood" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="271.0" y="460.0" />
+      <point x="351.0" y="460.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="foodsearch.domain.FoodStore" target="foodsearch.domain.Food" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="191.0" y="440.0" />
+      <point x="231.0" y="440.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="foodsearch.service.FoodServiceImpl" target="foodsearch.service.FoodService" relationship="REALIZATION">
+      <point x="41.75" y="-14.0" />
+      <point x="492.75" y="400.0" />
+      <point x="497.0" y="400.0" />
+      <point x="-34.0" y="14.0" />
+    </edge>
+    <edge source="foodsearch.domain.GetAllFoodOfTripResult" target="foodsearch.domain.TrainFood" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="411.0" y="580.0" />
+      <point x="271.0" y="580.0" />
+      <point x="271.0" y="460.0" />
+      <point x="351.0" y="460.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="foodsearch.controller.FoodController" target="foodsearch.service.FoodService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="551.0" y="460.0" />
+      <point x="565.0" y="460.0" />
+      <point x="34.0" y="14.0" />
+    </edge>
+    <edge source="foodsearch.domain.FindByOrderIdResult" target="foodsearch.domain.FoodOrder" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="391.0" y="900.0" />
+      <point x="111.0" y="900.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="foodsearch.domain.AddFoodOrderResult" target="foodsearch.domain.FoodOrder" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="511.0" y="900.0" />
+      <point x="111.0" y="900.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="foodsearch.domain.TrainFood" target="foodsearch.domain.Food" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="351.0" y="440.0" />
+      <point x="231.0" y="440.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="foodsearch.domain.UpdateFoodOrderResult" target="foodsearch.domain.FoodOrder" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="foodsearch.service.FoodServiceImpl" target="foodsearch.repository.FoodOrderRepository" relationship="TO_ONE">
+      <point x="-41.75" y="-14.0" />
+      <point x="409.25" y="400.0" />
+      <point x="411.0" y="400.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="foodsearch.domain.CancelFoodOrderResult" target="foodsearch.domain.FoodOrder" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="251.0" y="900.0" />
+      <point x="111.0" y="900.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.7290076335877863" showDependencies="true" x="269.5" y="510.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

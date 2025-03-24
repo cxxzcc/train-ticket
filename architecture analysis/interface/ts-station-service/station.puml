@@ -1,0 +1,65 @@
+@startuml
+actor User
+participant "ts-station-service" as StationService
+participant "ts-station-mongo" as Mongo
+
+== Create Station ==
+User -> StationService: POST /station/create
+StationService -> Mongo: Insert station data
+Mongo --> StationService: Return insert result
+StationService --> User: Return insert result
+
+== Delete Station ==
+User -> StationService: DELETE /station/delete
+StationService -> Mongo: Delete station data
+Mongo --> StationService: Return delete result
+StationService --> User: Return delete result
+
+== Check Station Existence ==
+User -> StationService: GET /station/exist
+StationService -> Mongo: Query station existence
+Mongo --> StationService: Return existence result
+StationService --> User: Return existence result
+
+== Query All Stations ==
+User -> StationService: GET /station/query
+StationService -> Mongo: Query all stations
+Mongo --> StationService: Return station list
+StationService --> User: Return station list
+
+== Query Station by ID ==
+User -> StationService: GET /station/queryById
+StationService -> Mongo: Query station by ID
+Mongo --> StationService: Return station data
+StationService --> User: Return station data
+
+== Query Stations by ID Batch ==
+User -> StationService: GET /station/queryByIdBatch
+StationService -> Mongo: Query stations by ID list
+Mongo --> StationService: Return station list
+StationService --> User: Return station list
+
+== Query Station Name by ID ==
+User -> StationService: GET /station/queryByIdForName
+StationService -> Mongo: Query station name by ID
+Mongo --> StationService: Return station name
+StationService --> User: Return station name
+
+== Query Station ID by Name ==
+User -> StationService: GET /station/queryForId
+StationService -> Mongo: Query station ID by name
+Mongo --> StationService: Return station ID
+StationService --> User: Return station ID
+
+== Query Station IDs by Names Batch ==
+User -> StationService: GET /station/queryForIdBatch
+StationService -> Mongo: Query station IDs by name list
+Mongo --> StationService: Return station ID list
+StationService --> User: Return station ID list
+
+== Update Station ==
+User -> StationService: PUT /station/update
+StationService -> Mongo: Update station data
+Mongo --> StationService: Return update result
+StationService --> User: Return update result
+@enduml

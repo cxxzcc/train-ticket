@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-admin-basic-info-service</OriginalElement>
+  <nodes>
+    <node x="111.5" y="906.0">adminbasic.service.AdminBasicInfoServiceImpl</node>
+    <node x="190.0" y="-14.0">adminbasic.domin.info.AdminLoginInfo</node>
+    <node x="108.0" y="46.0">adminbasic.domin.info.StationInfo</node>
+    <node x="-28.0" y="666.0">adminbasic.AdminBasicInfoApplication</node>
+    <node x="127.0" y="726.0">adminbasic.service.AdminBasicInfoService</node>
+    <node x="31.0" y="-14.0">adminbasic.domin.info.TrainInfo2</node>
+    <node x="159.5" y="586.0">adminbasic.domin.reuslt.GetAllStationResult</node>
+    <node x="37.0" y="526.0">adminbasic.domin.info.ModifyContactsInfo</node>
+    <node x="-115.0" y="726.0">adminbasic.domin.info.ConfigInfo2</node>
+    <node x="-23.0" y="846.0">adminbasic.controller.AdminBasicInfoController</node>
+    <node x="-10.5" y="1206.0">adminbasic.domin.reuslt.ModifyContactsResult</node>
+    <node x="67.0" y="226.0">adminbasic.domin.reuslt.GetAllTrainResult</node>
+    <node x="43.0" y="346.0">adminbasic.domin.bean.Config</node>
+    <node x="-13.5" y="166.0">adminbasic.domin.bean.PriceConfig</node>
+    <node x="80.0" y="1086.0">adminbasic.domin.reuslt.ReturnSinglePriceConfigResult</node>
+    <node x="-124.0" y="1086.0">adminbasic.domin.bean.Contacts</node>
+    <node x="-47.5" y="1026.0">adminbasic.domin.reuslt.DeleteContactsResult</node>
+    <node x="242.0" y="346.0">adminbasic.domin.bean.Station</node>
+    <node x="114.0" y="1266.0">adminbasic.domin.reuslt.GetAllContactsResult</node>
+    <node x="-120.0" y="406.0">adminbasic.domin.info.DeleteContactsInfo</node>
+    <node x="-119.5" y="1266.0">adminbasic.domin.reuslt.AddContactsResult</node>
+    <node x="-79.0" y="586.0">adminbasic.domin.reuslt.GetAllConfigResult</node>
+    <node x="108.0" y="406.0">adminbasic.domin.reuslt.GetAllPriceResult</node>
+    <node x="-132.0" y="226.0">adminbasic.domin.info.AddContactsInfo</node>
+    <node x="-104.0" y="906.0">adminbasic.domin.info.PriceInfo</node>
+    <node x="-48.0" y="46.0">adminbasic.domin.bean.TrainType</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="adminbasic.controller.AdminBasicInfoController" target="adminbasic.service.AdminBasicInfoService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="92.0" y="820.0" />
+      <point x="179.5" y="820.0" />
+      <point x="-52.5" y="14.0" />
+    </edge>
+    <edge source="adminbasic.domin.reuslt.GetAllContactsResult" target="adminbasic.domin.bean.Contacts" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="212.0" y="1180.0" />
+      <point x="-28.0" y="1180.0" />
+      <point x="-28.0" y="1140.0" />
+      <point x="-68.0" y="1140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminbasic.domin.reuslt.ModifyContactsResult" target="adminbasic.domin.bean.Contacts" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="92.0" y="1180.0" />
+      <point x="-28.0" y="1180.0" />
+      <point x="-28.0" y="1140.0" />
+      <point x="-68.0" y="1140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminbasic.domin.reuslt.ReturnSinglePriceConfigResult" target="adminbasic.domin.info.PriceInfo" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="212.0" y="1000.0" />
+      <point x="-48.0" y="1000.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminbasic.domin.reuslt.GetAllConfigResult" target="adminbasic.domin.bean.Config" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="12.0" y="500.0" />
+      <point x="92.0" y="500.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminbasic.domin.reuslt.GetAllTrainResult" target="adminbasic.domin.bean.TrainType" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="152.0" y="140.0" />
+      <point x="12.0" y="140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminbasic.domin.reuslt.AddContactsResult" target="adminbasic.domin.bean.Contacts" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-28.0" y="1140.0" />
+      <point x="-68.0" y="1140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminbasic.domin.reuslt.GetAllStationResult" target="adminbasic.domin.bean.Station" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="252.0" y="560.0" />
+      <point x="292.0" y="560.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminbasic.service.AdminBasicInfoServiceImpl" target="adminbasic.service.AdminBasicInfoService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="232.0" y="880.0" />
+      <point x="284.5" y="880.0" />
+      <point x="52.5" y="14.0" />
+    </edge>
+    <edge source="adminbasic.domin.reuslt.GetAllPriceResult" target="adminbasic.domin.bean.PriceConfig" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="192.0" y="320.0" />
+      <point x="52.0" y="320.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.5828313253012049" showDependencies="true" x="121.0" y="650.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

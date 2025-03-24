@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-notification-service</OriginalElement>
+  <nodes>
+    <node x="-30.0" y="106.0">notification.config.EmailConfig</node>
+    <node x="97.0" y="246.0">notification.domain.NotifyInfo</node>
+    <node x="-102.5" y="166.0">notification.domain.Mail</node>
+    <node x="-41.0" y="-14.0">notification.config.EmailProperties</node>
+    <node x="96.0" y="566.0">notification.controller.NotificationController</node>
+    <node x="-89.0" y="306.0">notification.NotificationApplication</node>
+    <node x="26.5" y="386.0">notification.service.NotificationService</node>
+    <node x="-107.0" y="446.0">notification.service.MailService</node>
+    <node x="-89.0" y="626.0">notification.service.NotificationServiceImpl</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="notification.config.EmailConfig" target="notification.config.EmailProperties" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="notification.service.NotificationServiceImpl" target="notification.service.NotificationService" relationship="REALIZATION">
+      <point x="53.5" y="-14.0" />
+      <point x="71.5" y="540.0" />
+      <point x="72.25" y="540.0" />
+      <point x="-45.75" y="14.0" />
+    </edge>
+    <edge source="notification.controller.NotificationController" target="notification.service.NotificationService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="198.0" y="540.0" />
+      <point x="163.75" y="540.0" />
+      <point x="45.75" y="14.0" />
+    </edge>
+    <edge source="notification.service.NotificationServiceImpl" target="notification.service.MailService" relationship="TO_ONE">
+      <point x="-53.5" y="-14.0" />
+      <point x="-35.5" y="600.0" />
+      <point x="-42.0" y="600.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="1.1104651162790697" showDependencies="true" x="106.5" y="330.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

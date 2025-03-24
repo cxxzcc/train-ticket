@@ -1,0 +1,110 @@
+@startuml
+actor User
+participant "ts-route-plan-service" as RoutePlan
+participant "ts-travel-service" as Travel1
+participant "ts-travel2-service" as Travel2
+participant "ts-station-service" as Station
+participant "ts-route-service" as Route
+participant "ts-travel-mongo" as TravelMongo
+participant "ts-travel2-mongo" as Travel2Mongo
+participant "ts-station-mongo" as StationMongo
+participant "ts-route-mongo" as RouteMongo
+
+== /routePlan/cheapestRoute ==
+User -> RoutePlan: GET /routePlan/cheapestRoute
+activate RoutePlan
+  RoutePlan -> Travel1: GET /travel/queryWithPackage
+  activate Travel1
+    Travel1 --> RoutePlan: Return trip data
+  deactivate Travel1
+  RoutePlan -> Travel2: GET /travel2/queryWithPackage
+  activate Travel2
+    Travel2 --> RoutePlan: Return trip data
+  deactivate Travel2
+  alt tripId starts with 'G' or 'D'
+    RoutePlan -> Travel1: GET /travel/getRouteByTripId/{tripId}
+    activate Travel1
+      Travel1 --> RoutePlan: Return route data
+    deactivate Travel1
+  else
+    RoutePlan -> Travel2: GET /travel2/getRouteByTripId/{tripId}
+    activate Travel2
+      Travel2 --> RoutePlan: Return route data
+    deactivate Travel2
+  end
+RoutePlan --> User: Return cheapest route
+deactivate RoutePlan
+
+== /routePlan/quickestRoute ==
+User -> RoutePlan: GET /routePlan/quickestRoute
+activate RoutePlan
+  RoutePlan -> Travel1: GET /travel/queryWithPackage
+  activate Travel1
+    Travel1 --> RoutePlan: Return trip data
+  deactivate Travel1
+  RoutePlan -> Travel2: GET /travel2/queryWithPackage
+  activate Travel2
+    Travel2 --> RoutePlan: Return trip data
+  deactivate Travel2
+  alt tripId starts with 'G' or 'D'
+    RoutePlan -> Travel1: GET /travel/getRouteByTripId/{tripId}
+    activate Travel1
+      Travel1 --> RoutePlan: Return route data
+    deactivate Travel1
+  else
+    RoutePlan -> Travel2: GET /travel2/getRouteByTripId/{tripId}
+    activate Travel2
+      Travel2 --> RoutePlan: Return route data
+    deactivate Travel2
+  end
+RoutePlan --> User: Return quickest route
+deactivate RoutePlan
+
+== /routePlan/minStopStations ==
+User -> RoutePlan: GET /routePlan/minStopStations
+activate RoutePlan
+  RoutePlan -> Station: GET /station/queryForId
+  activate Station
+    Station -> StationMongo: Query station data
+    StationMongo --> Station: Return station ID
+    Station --> RoutePlan: Return station ID
+  deactivate Station
+  RoutePlan -> Route: GET /route/queryByStartAndTerminal
+  activate Route
+    Route -> RouteMongo: Query route data
+    RouteMongo --> Route: Return route ID
+    Route --> RoutePlan: Return route ID
+  deactivate Route
+  RoutePlan -> Travel1: GET /travel/getTripsByRouteId
+  activate Travel1
+    Travel1 -> TravelMongo: Query trip data
+    TravelMongo --> Travel1: Return trip info
+    Travel1 --> RoutePlan: Return trip info
+  deactivate Travel1
+  RoutePlan -> Travel2: GET /travel2/getTripsByRouteId
+  activate Travel2
+    Travel2 -> Travel2Mongo: Query trip data
+    Travel2Mongo --> Travel2: Return trip info
+    Travel2 --> RoutePlan: Return trip info
+  deactivate Travel2
+  RoutePlan -> Travel1: GET /travel/getTripAllDetailInfo
+  activate Travel1
+    Travel1 -> TravelMongo: Query full trip details
+    TravelMongo --> Travel1: Return details
+    Travel1 --> RoutePlan: Return details
+  deactivate Travel1
+  RoutePlan -> Travel2: GET /travel2/getTripAllDetailInfo
+  activate Travel2
+    Travel2 -> Travel2Mongo: Query full trip details
+    Travel2Mongo --> Travel2: Return details
+    Travel2 --> RoutePlan: Return details
+  deactivate Travel2
+  RoutePlan -> Route: GET /route/queryById/{routeId}
+  activate Route
+    Route -> RouteMongo: Query route details
+    RouteMongo --> Route: Return route data
+    Route --> RoutePlan: Return route data
+  deactivate Route
+RoutePlan --> User: Return min-stop route
+deactivate RoutePlan
+@enduml

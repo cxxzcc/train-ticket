@@ -1,0 +1,44 @@
+@startuml
+actor User
+participant "ts-basic-service" as BasicService
+participant "ts-station-service" as StationService
+participant "ts-train-service" as TrainService
+participant "ts-route-service" as RouteService
+participant "ts-price-service" as PriceService
+participant "ts-station-mongo" as StationMongo
+participant "ts-train-mongo" as TrainMongo
+participant "ts-route-mongo" as RouteMongo
+participant "ts-price-mongo" as PriceMongo
+
+== Query for Travel ==
+User -> BasicService: GET /basic/queryForTravel
+BasicService -> StationService: GET /station/exist
+StationService -> StationMongo: Check station exists
+StationMongo --> StationService: Return station existence
+StationService --> BasicService: Return station existence
+
+BasicService -> TrainService: GET /train/retrieve
+TrainService -> TrainMongo: Query train type
+TrainMongo --> TrainService: Return train type data
+TrainService --> BasicService: Return train type data
+
+BasicService -> RouteService: GET /route/queryById/
+RouteService -> RouteMongo: Query route by ID
+RouteMongo --> RouteService: Return route data
+RouteService --> BasicService: Return route data
+
+BasicService -> PriceService: GET /price/query
+PriceService -> PriceMongo: Query price config
+PriceMongo --> PriceService: Return price config
+PriceService --> BasicService: Return price config
+
+BasicService --> User: Return travel query result
+
+== Query for Station ID ==
+User -> BasicService: GET /basic/queryForStationId
+BasicService -> StationService: GET /station/queryForId
+StationService -> StationMongo: Query station by ID
+StationMongo --> StationService: Return station data
+StationService --> BasicService: Return station data
+BasicService --> User: Return station ID result
+@enduml

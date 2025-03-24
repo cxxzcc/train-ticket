@@ -1,0 +1,39 @@
+@startuml
+actor User
+participant "ts-consign-service" as ConsignService
+participant "ts-consign-price-service" as ConsignPriceService
+participant "ts-consign-price-mongo" as ConsignPriceMongo
+participant "ts-consign-mongo" as ConsignMongo
+
+== Insert Consign ==
+User -> ConsignService: POST /consign/insertConsign
+ConsignService -> ConsignPriceService: GET /consignPrice/getPrice
+ConsignPriceService -> ConsignPriceMongo: Query consign_price
+ConsignPriceMongo --> ConsignPriceService: Return price data
+ConsignPriceService --> ConsignService: Return price data
+ConsignService -> ConsignMongo: Insert consign_record
+ConsignMongo --> ConsignService: Return insert result
+ConsignService --> User: Return insert result
+
+== Update Consign ==
+User -> ConsignService: PUT /consign/updateConsign
+ConsignService -> ConsignPriceService: GET /consignPrice/getPrice
+ConsignPriceService -> ConsignPriceMongo: Query consign_price
+ConsignPriceMongo --> ConsignPriceService: Return price data
+ConsignPriceService --> ConsignService: Return price data
+ConsignService -> ConsignMongo: Update consign_record
+ConsignMongo --> ConsignService: Return update result
+ConsignService --> User: Return update result
+
+== Find By Account ID ==
+User -> ConsignService: GET /consign/findByAccountId/{id}
+ConsignService -> ConsignMongo: Query consign_record
+ConsignMongo --> ConsignService: Return consign data
+ConsignService --> User: Return consign data
+
+== Find By Consignee ==
+User -> ConsignService: GET /consign/findByConsignee
+ConsignService -> ConsignMongo: Query consign_record
+ConsignMongo --> ConsignService: Return consign data
+ConsignService --> User: Return consign data
+@enduml

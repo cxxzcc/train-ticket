@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-route-service</OriginalElement>
+  <nodes>
+    <node x="186.5" y="626.0">route.domain.GetRouteByIdResult</node>
+    <node x="-8.0" y="566.0">route.domain.CreateAndModifyRouteResult</node>
+    <node x="120.0" y="306.0">route.controller.RouteController</node>
+    <node x="131.5" y="126.0">route.domain.DeleteRouteResult</node>
+    <node x="-125.0" y="-14.0">route.RouteApplication</node>
+    <node x="-1.0" y="386.0">route.domain.GetRouteByStartAndTerminalInfo</node>
+    <node x="48.0" y="246.0">route.init.InitData</node>
+    <node x="10.5" y="66.0">route.service.RouteService</node>
+    <node x="-105.0" y="306.0">route.service.RouteServiceImpl</node>
+    <node x="255.0" y="446.0">route.domain.Route</node>
+    <node x="219.0" y="246.0">route.domain.DeleteRouteInfo</node>
+    <node x="-135.0" y="626.0">route.domain.GetRoutesListlResult</node>
+    <node x="-141.0" y="446.0">route.domain.CreateAndModifyRouteInfo</node>
+    <node x="-142.0" y="126.0">route.repository.RouteRepository</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="route.controller.RouteController" target="route.service.RouteService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="201.0" y="220.0" />
+      <point x="121.0" y="220.0" />
+      <point x="121.0" y="180.0" />
+      <point x="116.25" y="180.0" />
+      <point x="35.25" y="14.0" />
+    </edge>
+    <edge source="route.init.InitData" target="route.service.RouteService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="101.0" y="220.0" />
+      <point x="121.0" y="220.0" />
+      <point x="121.0" y="180.0" />
+      <point x="116.25" y="180.0" />
+      <point x="35.25" y="14.0" />
+    </edge>
+    <edge source="route.domain.GetRoutesListlResult" target="route.domain.Route" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="-39.0" y="540.0" />
+      <point x="121.0" y="540.0" />
+      <point x="121.0" y="500.0" />
+      <point x="301.0" y="500.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="route.service.RouteServiceImpl" target="route.service.RouteService" relationship="REALIZATION">
+      <point x="43.0" y="-14.0" />
+      <point x="24.0" y="220.0" />
+      <point x="45.75" y="220.0" />
+      <point x="-35.25" y="14.0" />
+    </edge>
+    <edge source="route.domain.CreateAndModifyRouteResult" target="route.domain.Route" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="121.0" y="500.0" />
+      <point x="301.0" y="500.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="route.service.RouteServiceImpl" target="route.repository.RouteRepository" relationship="TO_ONE">
+      <point x="-43.0" y="-14.0" />
+      <point x="-62.0" y="280.0" />
+      <point x="-59.0" y="280.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="route.domain.GetRouteByIdResult" target="route.domain.Route" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="281.0" y="540.0" />
+      <point x="121.0" y="540.0" />
+      <point x="121.0" y="500.0" />
+      <point x="301.0" y="500.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="1.1104651162790697" showDependencies="true" x="130.49999999999994" y="329.99999999999994" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

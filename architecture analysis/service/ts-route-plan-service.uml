@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-route-plan-service</OriginalElement>
+  <nodes>
+    <node x="96.0" y="1306.0">plan.domain.Trip</node>
+    <node x="-137.0" y="1306.0">plan.domain.TripResponse</node>
+    <node x="-26.0" y="66.0">plan.RoutePlanApplication</node>
+    <node x="-27.0" y="946.0">plan.domain.Type</node>
+    <node x="59.0" y="486.0">plan.domain.GetRoutesListlResult</node>
+    <node x="-14.5" y="246.0">plan.domain.QueryForStationId</node>
+    <node x="11.0" y="566.0">plan.domain.GetTripsByRouteIdInfo</node>
+    <node x="-130.5" y="306.0">plan.domain.RoutePlanResults</node>
+    <node x="123.5" y="946.0">plan.domain.GetTripsByRouteIdResult</node>
+    <node x="-141.0" y="806.0">plan.controller.RoutePlanController</node>
+    <node x="-26.0" y="746.0">plan.service.RoutePlanServiceImpl</node>
+    <node x="-87.0" y="1486.0">plan.domain.QueryTripResponsePackage</node>
+    <node x="-30.5" y="1126.0">plan.domain.TripId</node>
+    <node x="73.5" y="1426.0">plan.domain.GetTripAllDetailResult</node>
+    <node x="161.0" y="1246.0">plan.domain.GetTripAllDetailInfo</node>
+    <node x="-90.5" y="626.0">plan.service.RoutePlanService</node>
+    <node x="34.5" y="886.0">plan.domain.QueryInfo</node>
+    <node x="-132.0" y="-14.0">plan.domain.GetRoutePlanInfo</node>
+    <node x="33.0" y="1066.0">plan.domain.GetRouteByStartAndTerminalInfo</node>
+    <node x="196.0" y="426.0">plan.domain.GetRouteResult</node>
+    <node x="149.0" y="306.0">plan.domain.Route</node>
+    <node x="-142.0" y="126.0">plan.domain.RoutePlanResultUnit</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="plan.domain.GetTripAllDetailResult" target="plan.domain.TripResponse" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="175.0" y="1400.0" />
+      <point x="75.0" y="1400.0" />
+      <point x="75.0" y="1380.0" />
+      <point x="35.0" y="1380.0" />
+      <point x="35.0" y="1280.0" />
+      <point x="-65.0" y="1280.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="plan.domain.TripId" target="plan.domain.Type" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="plan.domain.TripResponse" target="plan.domain.TripId" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-65.0" y="1100.0" />
+      <point x="15.0" y="1100.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="plan.domain.GetRouteResult" target="plan.domain.Route" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="275.0" y="400.0" />
+      <point x="195.0" y="400.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="plan.domain.QueryTripResponsePackage" target="plan.domain.TripResponse" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="35.0" y="1280.0" />
+      <point x="-65.0" y="1280.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="plan.domain.Trip" target="plan.domain.TripId" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="135.0" y="1260.0" />
+      <point x="-65.0" y="1260.0" />
+      <point x="-65.0" y="1100.0" />
+      <point x="15.0" y="1100.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="plan.domain.RoutePlanResults" target="plan.domain.RoutePlanResultUnit" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="plan.controller.RoutePlanController" target="plan.service.RoutePlanService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-45.0" y="780.0" />
+      <point x="-47.75" y="780.0" />
+      <point x="-42.75" y="14.0" />
+    </edge>
+    <edge source="plan.service.RoutePlanServiceImpl" target="plan.service.RoutePlanService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="75.0" y="720.0" />
+      <point x="37.75" y="720.0" />
+      <point x="42.75" y="14.0" />
+    </edge>
+    <edge source="plan.domain.GetRoutesListlResult" target="plan.domain.Route" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="155.0" y="400.0" />
+      <point x="195.0" y="400.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="plan.domain.GetTripAllDetailResult" target="plan.domain.Trip" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="175.0" y="1400.0" />
+      <point x="75.0" y="1400.0" />
+      <point x="75.0" y="1280.0" />
+      <point x="135.0" y="1280.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.5" showDependencies="true" x="116.0" y="760.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-basic-service</OriginalElement>
+  <nodes>
+    <node x="104.5" y="546.0">fdse.microservice.domain.QueryForStationId</node>
+    <node x="57.0" y="46.0">fdse.microservice.domain.QueryPriceInfo</node>
+    <node x="-49.0" y="1346.0">fdse.microservice.service.BasicServiceImpl</node>
+    <node x="51.0" y="186.0">fdse.microservice.BasicApplication</node>
+    <node x="-51.5" y="486.0">fdse.microservice.domain.TripId</node>
+    <node x="95.0" y="846.0">fdse.microservice.domain.QueryForTravel</node>
+    <node x="195.0" y="726.0">fdse.microservice.domain.Trip</node>
+    <node x="-36.0" y="-14.0">fdse.microservice.domain.QueryConfig</node>
+    <node x="-45.0" y="306.0">fdse.microservice.domain.ResultForTravel</node>
+    <node x="-142.0" y="546.0">fdse.microservice.domain.Contacts</node>
+    <node x="-147.0" y="46.0">fdse.microservice.domain.QueryTrainType</node>
+    <node x="-93.5" y="1226.0">fdse.microservice.service.BasicService</node>
+    <node x="-14.0" y="986.0">fdse.microservice.domain.QueryPriceConfigByTrainAndRoute</node>
+    <node x="-0.5" y="1166.0">fdse.microservice.domain.GetRouteByIdResult</node>
+    <node x="-148.0" y="366.0">fdse.microservice.domain.GetContactsInfo</node>
+    <node x="-26.0" y="126.0">fdse.microservice.domain.TrainType</node>
+    <node x="-137.5" y="186.0">fdse.microservice.domain.QueryStation</node>
+    <node x="92.0" y="366.0">fdse.microservice.domain.Type</node>
+    <node x="-138.0" y="906.0">fdse.microservice.domain.ReturnSinglePriceConfigResult</node>
+    <node x="-35.0" y="666.0">fdse.microservice.domain.GetContactsResult</node>
+    <node x="-144.0" y="1406.0">fdse.microservice.controller.BasicController</node>
+    <node x="-131.5" y="726.0">fdse.microservice.domain.PriceConfig</node>
+    <node x="-92.0" y="1046.0">fdse.microservice.domain.Route</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="fdse.microservice.service.BasicServiceImpl" target="fdse.microservice.service.BasicService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="34.0" y="1320.0" />
+      <point x="7.75" y="1320.0" />
+      <point x="33.75" y="14.0" />
+    </edge>
+    <edge source="fdse.microservice.domain.Trip" target="fdse.microservice.domain.TripId" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="234.0" y="640.0" />
+      <point x="74.0" y="640.0" />
+      <point x="74.0" y="460.0" />
+      <point x="-6.0" y="460.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="fdse.microservice.domain.QueryForTravel" target="fdse.microservice.domain.Trip" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="174.0" y="700.0" />
+      <point x="234.0" y="700.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="fdse.microservice.domain.GetContactsResult" target="fdse.microservice.domain.Contacts" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="54.0" y="640.0" />
+      <point x="-86.0" y="640.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="fdse.microservice.domain.ResultForTravel" target="fdse.microservice.domain.TrainType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="fdse.microservice.controller.BasicController" target="fdse.microservice.service.BasicService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-66.0" y="1320.0" />
+      <point x="-59.75" y="1320.0" />
+      <point x="-33.75" y="14.0" />
+    </edge>
+    <edge source="fdse.microservice.domain.ReturnSinglePriceConfigResult" target="fdse.microservice.domain.PriceConfig" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-6.0" y="880.0" />
+      <point x="-66.0" y="880.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="fdse.microservice.domain.GetRouteByIdResult" target="fdse.microservice.domain.Route" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="94.0" y="1140.0" />
+      <point x="-46.0" y="1140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="fdse.microservice.domain.TripId" target="fdse.microservice.domain.Type" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-6.0" y="440.0" />
+      <point x="134.0" y="440.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.5272479564032697" showDependencies="true" x="78.0" y="720.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

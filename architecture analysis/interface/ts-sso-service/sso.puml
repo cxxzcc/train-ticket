@@ -1,0 +1,65 @@
+@startuml
+actor User
+participant "ts-sso-service" as SSOService
+participant "ts-account-mongo" as Mongo
+
+== Admin Delete Account ==
+User -> SSOService: DELETE /account/admindelete
+SSOService -> Mongo: Delete account from accounts collection
+Mongo --> SSOService: Return delete result
+SSOService --> User: Return delete result
+
+== Admin Login ==
+User -> SSOService: POST /account/adminlogin
+SSOService -> Mongo: Validate admin credentials
+Mongo --> SSOService: Return validation result
+SSOService --> User: Return login result
+
+== Find All Accounts ==
+User -> SSOService: GET /account/findAll
+SSOService -> Mongo: Query all accounts
+Mongo --> SSOService: Return accounts data
+SSOService --> User: Return accounts data
+
+== Find All Login Records ==
+User -> SSOService: GET /account/findAllLogin
+SSOService -> Mongo: Query all login records
+Mongo --> SSOService: Return login records
+SSOService --> User: Return login records
+
+== Find Account By ID ==
+User -> SSOService: GET /account/findById
+SSOService -> Mongo: Query account by ID
+Mongo --> SSOService: Return account data
+SSOService --> User: Return account data
+
+== User Login ==
+User -> SSOService: POST /account/login
+SSOService -> Mongo: Validate user credentials
+Mongo --> SSOService: Return validation result
+SSOService --> User: Return login result
+
+== Modify Account ==
+User -> SSOService: PUT /account/modify
+SSOService -> Mongo: Update account data
+Mongo --> SSOService: Return update result
+SSOService --> User: Return update result
+
+== Register Account ==
+User -> SSOService: POST /account/register
+SSOService -> Mongo: Insert new account
+Mongo --> SSOService: Return insert result
+SSOService --> User: Return register result
+
+== User Logout ==
+User -> SSOService: POST /logout
+SSOService -> Mongo: Update login status
+Mongo --> SSOService: Return logout result
+SSOService --> User: Return logout result
+
+== Verify Login Token ==
+User -> SSOService: GET /verifyLoginToken/{token}
+SSOService -> Mongo: Validate token
+Mongo --> SSOService: Return token validation result
+SSOService --> User: Return token validation result
+@enduml

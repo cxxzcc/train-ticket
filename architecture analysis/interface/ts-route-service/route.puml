@@ -1,0 +1,35 @@
+@startuml
+actor User
+participant "ts-route-service" as RouteService
+participant "ts-route-mongo" as Mongo
+
+== Create/Modify Route ==
+User -> RouteService: POST /route/createAndModify
+RouteService -> Mongo: Insert/Update document in "routes" collection
+Mongo --> RouteService: Return write result (acknowledged)
+RouteService --> User: Return success/failure response
+
+== Delete Route ==
+User -> RouteService: DELETE /route/delete
+RouteService -> Mongo: Delete document from "routes" collection
+Mongo --> RouteService: Return delete result
+RouteService --> User: Return deletion status
+
+== Query Route by ID ==
+User -> RouteService: GET /route/queryById/{routeId}
+RouteService -> Mongo: Find document by _id in "routes" collection
+Mongo --> RouteService: Return route document
+RouteService --> User: Return route details
+
+== Query All Routes ==
+User -> RouteService: GET /route/queryAll
+RouteService -> Mongo: Find all documents in "routes" collection
+Mongo --> RouteService: Return list of routes
+RouteService --> User: Return full routes list
+
+== Query by Start & Terminal ==
+User -> RouteService: GET /route/queryByStartAndTerminal
+RouteService -> Mongo: Query "routes" collection\nwith startStation & terminalStation filters
+Mongo --> RouteService: Return filtered routes
+RouteService --> User: Return matching routes
+@enduml

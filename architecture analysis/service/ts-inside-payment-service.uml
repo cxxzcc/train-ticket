@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-inside-payment-service</OriginalElement>
+  <nodes>
+    <node x="128.0" y="646.0">inside_payment.domain.OutsidePaymentInfo</node>
+    <node x="191.5" y="126.0">inside_payment.domain.DrawBackInfo</node>
+    <node x="95.0" y="186.0">inside_payment.domain.PaymentInfo</node>
+    <node x="64.0" y="1046.0">inside_payment.service.InsidePaymentService</node>
+    <node x="43.5" y="46.0">inside_payment.util.CookieUtil</node>
+    <node x="-27.0" y="-14.0">inside_payment.domain.Balance</node>
+    <node x="238.5" y="446.0">inside_payment.domain.GetOrderByIdInfo</node>
+    <node x="-106.5" y="1346.0">inside_payment.controller.InsidePaymentController</node>
+    <node x="191.5" y="966.0">inside_payment.domain.ModifyOrderStatusResult</node>
+    <node x="227.0" y="266.0">inside_payment.domain.AddMoneyInfo</node>
+    <node x="17.0" y="586.0">inside_payment.domain.QueryOrderResult</node>
+    <node x="-2.0" y="126.0">inside_payment.domain.OrderStatus</node>
+    <node x="-116.5" y="1106.0">inside_payment.repository.AddMoneyRepository</node>
+    <node x="92.0" y="1286.0">inside_payment.init.InitData</node>
+    <node x="168.0" y="1346.0">inside_payment.service.InsidePaymentServiceImpl</node>
+    <node x="-116.5" y="46.0">inside_payment.async.AsyncTask</node>
+    <node x="204.0" y="786.0">inside_payment.domain.AddMoneyType</node>
+    <node x="67.0" y="446.0">inside_payment.domain.SeatClass</node>
+    <node x="-101.5" y="186.0">inside_payment.domain.QueryOrder</node>
+    <node x="232.0" y="1106.0">inside_payment.repository.PaymentRepository</node>
+    <node x="149.0" y="506.0">inside_payment.domain.Payment</node>
+    <node x="-91.5" y="966.0">inside_payment.InsidePaymentApplication</node>
+    <node x="132.0" y="326.0">inside_payment.domain.PaymentType</node>
+    <node x="-53.5" y="506.0">inside_payment.domain.GetOrderResult</node>
+    <node x="101.0" y="906.0">inside_payment.domain.AddMoney</node>
+    <node x="-114.0" y="326.0">inside_payment.async.ExecutorConfig</node>
+    <node x="39.0" y="726.0">inside_payment.domain.PaymentDifferenceInfo</node>
+    <node x="20.0" y="266.0">inside_payment.domain.Order</node>
+    <node x="-105.5" y="646.0">inside_payment.domain.CreateAccountInfo</node>
+    <node x="-101.0" y="786.0">inside_payment.domain.ModifyOrderStatusInfo</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="inside_payment.domain.Payment" target="inside_payment.domain.PaymentType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="inside_payment.service.InsidePaymentServiceImpl" target="inside_payment.repository.AddMoneyRepository" relationship="TO_ONE">
+      <point x="-58.5" y="-14.0" />
+      <point x="226.5" y="1320.0" />
+      <point x="225.0" y="1320.0" />
+      <point x="225.0" y="1220.0" />
+      <point x="145.0" y="1220.0" />
+      <point x="145.0" y="1160.0" />
+      <point x="-15.0" y="1160.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="inside_payment.init.InitData" target="inside_payment.repository.PaymentRepository" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="145.0" y="1200.0" />
+      <point x="225.0" y="1200.0" />
+      <point x="225.0" y="1160.0" />
+      <point x="325.0" y="1160.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="inside_payment.domain.GetOrderResult" target="inside_payment.domain.Order" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="25.0" y="420.0" />
+      <point x="65.0" y="420.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="inside_payment.domain.AddMoney" target="inside_payment.domain.AddMoneyType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="165.0" y="880.0" />
+      <point x="285.0" y="880.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="inside_payment.service.InsidePaymentServiceImpl" target="inside_payment.repository.PaymentRepository" relationship="TO_ONE">
+      <point x="-58.5" y="-14.0" />
+      <point x="226.5" y="1320.0" />
+      <point x="225.0" y="1320.0" />
+      <point x="225.0" y="1160.0" />
+      <point x="325.0" y="1160.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="inside_payment.init.InitData" target="inside_payment.service.InsidePaymentService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="145.0" y="1240.0" />
+      <point x="105.0" y="1240.0" />
+      <point x="105.0" y="1100.0" />
+      <point x="114.5" y="1100.0" />
+      <point x="-50.5" y="14.0" />
+    </edge>
+    <edge source="inside_payment.service.InsidePaymentServiceImpl" target="inside_payment.service.InsidePaymentService" relationship="REALIZATION">
+      <point x="58.5" y="-14.0" />
+      <point x="343.5" y="1180.0" />
+      <point x="215.5" y="1180.0" />
+      <point x="50.5" y="14.0" />
+    </edge>
+    <edge source="inside_payment.init.InitData" target="inside_payment.repository.AddMoneyRepository" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="145.0" y="1160.0" />
+      <point x="-15.0" y="1160.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="inside_payment.controller.InsidePaymentController" target="inside_payment.service.InsidePaymentService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="5.0" y="1260.0" />
+      <point x="105.0" y="1260.0" />
+      <point x="105.0" y="1100.0" />
+      <point x="114.5" y="1100.0" />
+      <point x="-50.5" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.5426136363636364" showDependencies="true" x="161.0" y="690.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

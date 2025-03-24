@@ -1,0 +1,30 @@
+@startuml
+actor User
+participant "ts-admin-route-service" as AdminRouteService
+participant "ts-route-service" as RouteService
+participant "ts-route-mongo" as Mongo
+
+== Query All Routes ==
+User -> AdminRouteService: GET /adminroute/findAll/{id}
+AdminRouteService -> RouteService: GET /route/queryAll
+RouteService -> Mongo: Query routes collection
+Mongo --> RouteService: Return routes data
+RouteService --> AdminRouteService: Return routes data
+AdminRouteService --> User: Return routes data
+
+== Create or Modify Route ==
+User -> AdminRouteService: POST /adminroute/createAndModifyRoute
+AdminRouteService -> RouteService: POST /route/createAndModify
+RouteService -> Mongo: Insert or update route data
+Mongo --> RouteService: Return operation result
+RouteService --> AdminRouteService: Return operation result
+AdminRouteService --> User: Return operation result
+
+== Delete Route ==
+User -> AdminRouteService: DELETE /adminroute/deleteRoute
+AdminRouteService -> RouteService: DELETE /route/delete
+RouteService -> Mongo: Delete route data
+Mongo --> RouteService: Return delete result
+RouteService --> AdminRouteService: Return delete result
+AdminRouteService --> User: Return delete result
+@enduml

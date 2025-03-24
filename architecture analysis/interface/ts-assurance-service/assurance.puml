@@ -1,0 +1,51 @@
+@startuml
+actor User
+participant "ts-assurance-service" as AssuranceService
+participant "ts-assurance-mongo" as Mongo
+
+== Create Assurance ==
+User -> AssuranceService: POST /assurance/create
+AssuranceService -> Mongo: Insert assurance data
+Mongo --> AssuranceService: Return insert result
+AssuranceService --> User: Return insert result
+
+== Delete Assurance ==
+User -> AssuranceService: DELETE /assurance/deleteAssurance
+AssuranceService -> Mongo: Delete assurance data
+Mongo --> AssuranceService: Return delete result
+AssuranceService --> User: Return delete result
+
+== Delete Assurance by Order ID ==
+User -> AssuranceService: DELETE /assurance/deleteAssuranceByOrderId
+AssuranceService -> Mongo: Delete assurance data by order ID
+Mongo --> AssuranceService: Return delete result
+AssuranceService --> User: Return delete result
+
+== Find All Assurances ==
+User -> AssuranceService: GET /assurance/findAll
+AssuranceService -> Mongo: Query all assurance data
+Mongo --> AssuranceService: Return assurance list
+AssuranceService --> User: Return assurance list
+
+== Find Assurance by Order ID ==
+User -> AssuranceService: GET /assurance/findAssuranceByOrderId
+AssuranceService -> Mongo: Query assurance data by order ID
+Mongo --> AssuranceService: Return assurance data
+AssuranceService --> User: Return assurance data
+
+== Get All Assurance Types ==
+User -> AssuranceService: GET /assurance/getAllAssuranceType
+AssuranceService --> User: Return assurance types
+
+== Get Assurance by ID ==
+User -> AssuranceService: GET /assurance/getAssuranceById
+AssuranceService -> Mongo: Query assurance data by ID
+Mongo --> AssuranceService: Return assurance data
+AssuranceService --> User: Return assurance data
+
+== Modify Assurance ==
+User -> AssuranceService: PUT /assurance/modifyAssurance
+AssuranceService -> Mongo: Update assurance data
+Mongo --> AssuranceService: Return update result
+AssuranceService --> User: Return update result
+@enduml

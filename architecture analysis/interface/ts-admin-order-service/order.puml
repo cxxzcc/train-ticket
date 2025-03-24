@@ -1,0 +1,66 @@
+@startuml
+actor User
+participant "ts-admin-order-service" as AdminOrderService
+participant "ts-order-service" as OrderService
+participant "ts-order-other-service" as OrderOtherService
+participant "ts-order-mongo" as OrderMongo
+participant "ts-order-other-mongo" as OrderOtherMongo
+
+== Find All Orders ==
+User -> AdminOrderService: GET /adminorder/findAll/{id}
+AdminOrderService -> OrderService: GET /order/findAll
+OrderService -> OrderMongo: Query orders collection
+OrderMongo --> OrderService: Return orders data
+OrderService --> AdminOrderService: Return orders data
+
+AdminOrderService -> OrderOtherService: GET /orderOther/findAll
+OrderOtherService -> OrderOtherMongo: Query orders collection
+OrderOtherMongo --> OrderOtherService: Return orders data
+OrderOtherService --> AdminOrderService: Return orders data
+AdminOrderService --> User: Return combined orders data
+
+== Add Order ==
+User -> AdminOrderService: POST /adminorder/addOrder
+alt if trainNumber starts with "G" or "D"
+    AdminOrderService -> OrderService: POST /order/adminAddOrder
+    OrderService -> OrderMongo: Insert order data
+    OrderMongo --> OrderService: Return insert result
+    OrderService --> AdminOrderService: Return insert result
+else
+    AdminOrderService -> OrderOtherService: POST /orderOther/adminAddOrder
+    OrderOtherService -> OrderOtherMongo: Insert order data
+    OrderOtherMongo --> OrderOtherService: Return insert result
+    OrderOtherService --> AdminOrderService: Return insert result
+end
+AdminOrderService --> User: Return add result
+
+== Update Order ==
+User -> AdminOrderService: PUT /adminorder/updateOrder
+alt if trainNumber starts with "G" or "D"
+    AdminOrderService -> OrderService: PUT /order/adminUpdate
+    OrderService -> OrderMongo: Update order data
+    OrderMongo --> OrderService: Return update result
+    OrderService --> AdminOrderService: Return update result
+else
+    AdminOrderService -> OrderOtherService: PUT /orderOther/adminUpdate
+    OrderOtherService -> OrderOtherMongo: Update order data
+    OrderOtherMongo --> OrderOtherService: Return update result
+    OrderOtherService --> AdminOrderService: Return update result
+end
+AdminOrderService --> User: Return update result
+
+== Delete Order ==
+User -> AdminOrderService: DELETE /adminorder/deleteOrder
+alt if trainNumber starts with "G" or "D"
+    AdminOrderService -> OrderService: DELETE /order/delete
+    OrderService -> OrderMongo: Delete order data
+    OrderMongo --> OrderService: Return delete result
+    OrderService --> AdminOrderService: Return delete result
+else
+    AdminOrderService -> OrderOtherService: DELETE /orderOther/delete
+    OrderOtherService -> OrderOtherMongo: Delete order data
+    OrderOtherMongo --> OrderOtherService: Return delete result
+    OrderOtherService --> AdminOrderService: Return delete result
+end
+AdminOrderService --> User: Return delete result
+@enduml

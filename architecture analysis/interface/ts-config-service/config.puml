@@ -1,0 +1,41 @@
+@startuml
+actor User
+participant "ts-config-service" as ConfigService
+participant "ts-config-mongo" as Mongo
+
+== Create Config ==
+User -> ConfigService: POST /config/create
+ConfigService -> Mongo: Insert config data
+Mongo --> ConfigService: Return insert result
+ConfigService --> User: Return insert result
+
+== Delete Config ==
+User -> ConfigService: DELETE /config/delete
+ConfigService -> Mongo: Delete config data
+Mongo --> ConfigService: Return delete result
+ConfigService --> User: Return delete result
+
+== Query Config ==
+User -> ConfigService: GET /config/query
+ConfigService -> Mongo: Query config data
+Mongo --> ConfigService: Return query result
+ConfigService --> User: Return query result
+
+== Query All Configs ==
+User -> ConfigService: GET /config/queryAll
+ConfigService -> Mongo: Query all config data
+Mongo --> ConfigService: Return query result
+ConfigService --> User: Return query result
+
+== Retrieve Config ==
+User -> ConfigService: GET /config/retrieve
+ConfigService -> Mongo: Retrieve config data
+Mongo --> ConfigService: Return retrieve result
+ConfigService --> User: Return retrieve result
+
+== Update Config ==
+User -> ConfigService: PUT /config/update
+ConfigService -> Mongo: Update config data
+Mongo --> ConfigService: Return update result
+ConfigService --> User: Return update result
+@enduml

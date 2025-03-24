@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-station-service</OriginalElement>
+  <nodes>
+    <node x="-93.0" y="646.0">fdse.microservice.init.InitData</node>
+    <node x="96.0" y="186.0">fdse.microservice.domain.QueryForIdBatch</node>
+    <node x="29.5" y="266.0">fdse.microservice.StationApplication</node>
+    <node x="72.5" y="406.0">fdse.microservice.repository.StationRepository</node>
+    <node x="149.5" y="646.0">fdse.microservice.service.StationServiceImpl</node>
+    <node x="-35.0" y="466.0">fdse.microservice.service.StationService</node>
+    <node x="-103.0" y="326.0">fdse.microservice.domain.QueryByIdBatchResult</node>
+    <node x="18.0" y="126.0">fdse.microservice.domain.QueryById</node>
+    <node x="-5.5" y="586.0">fdse.microservice.controller.StationController</node>
+    <node x="93.0" y="46.0">fdse.microservice.domain.Information</node>
+    <node x="215.5" y="466.0">fdse.microservice.domain.QueryForId</node>
+    <node x="-11.5" y="-14.0">fdse.microservice.domain.QueryStation</node>
+    <node x="-90.0" y="46.0">fdse.microservice.domain.Station</node>
+    <node x="-101.5" y="186.0">fdse.microservice.domain.QueryByIdBatch</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="fdse.microservice.init.InitData" target="fdse.microservice.service.StationService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-40.0" y="560.0" />
+      <point x="0.0" y="560.0" />
+      <point x="0.0" y="520.0" />
+      <point x="2.5" y="520.0" />
+      <point x="-37.5" y="14.0" />
+    </edge>
+    <edge source="fdse.microservice.service.StationServiceImpl" target="fdse.microservice.repository.StationRepository" relationship="TO_ONE">
+      <point x="45.25" y="-14.0" />
+      <point x="285.25" y="520.0" />
+      <point x="160.0" y="520.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="fdse.microservice.controller.StationController" target="fdse.microservice.service.StationService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="80.0" y="560.0" />
+      <point x="0.0" y="560.0" />
+      <point x="0.0" y="520.0" />
+      <point x="2.5" y="520.0" />
+      <point x="-37.5" y="14.0" />
+    </edge>
+    <edge source="fdse.microservice.service.StationServiceImpl" target="fdse.microservice.service.StationService" relationship="REALIZATION">
+      <point x="-45.25" y="-14.0" />
+      <point x="194.75" y="540.0" />
+      <point x="77.5" y="540.0" />
+      <point x="37.5" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="1.07909604519774" showDependencies="true" x="131.0" y="340.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,80 @@
+@startuml
+actor User
+participant "ts-travel-plan-service" as TravelPlanService
+participant "ts-travel-service" as TravelService
+participant "ts-travel2-service" as Travel2Service
+participant "ts-route-plan-service" as RoutePlanService
+participant "ts-station-service" as StationService
+participant "ts-seat-service" as SeatService
+participant "ts-ticketinfo-service" as TicketInfoService
+participant "ts-basic-service" as BasicService
+participant "ts-station-mongo" as Mongo
+
+== Get Transfer Result ==
+User -> TravelPlanService: GET /travelPlan/getTransferResult
+TravelPlanService -> TravelService: GET /travel/query (tripsFromHighSpeed)
+TravelPlanService -> Travel2Service: GET /travel2/query (tripsFromNormal)
+TravelService --> TravelPlanService: Return high-speed trips
+Travel2Service --> TravelPlanService: Return normal trips
+TravelPlanService --> User: Return transfer result
+
+== Get Cheapest Travel Plan ==
+User -> TravelPlanService: GET /travelPlan/getCheapest
+TravelPlanService -> RoutePlanService: GET /routePlan/cheapestRoute
+RoutePlanService --> TravelPlanService: Return cheapest route
+TravelPlanService -> StationService: GET /station/queryByIdForName
+StationService -> Mongo: Query station name
+Mongo --> StationService: Return station name
+StationService --> TravelPlanService: Return station name
+TravelPlanService -> SeatService: GET /seat/getLeftTicketOfInterval
+SeatService --> TravelPlanService: Return rest ticket number
+TravelPlanService -> TicketInfoService: GET /ticketinfo/queryForStationId
+TicketInfoService -> BasicService: GET /basic/queryForStationId
+BasicService --> TicketInfoService: Return station ID
+TicketInfoService -> StationService: GET /station/queryForId
+StationService -> Mongo: Query station ID
+Mongo --> StationService: Return station ID
+StationService --> TicketInfoService: Return station ID
+TicketInfoService --> TravelPlanService: Return station ID
+TravelPlanService --> User: Return cheapest travel plan
+
+== Get Quickest Travel Plan ==
+User -> TravelPlanService: GET /travelPlan/getQuickest
+TravelPlanService -> RoutePlanService: GET /routePlan/quickestRoute
+RoutePlanService --> TravelPlanService: Return quickest route
+TravelPlanService -> StationService: GET /station/queryByIdForName
+StationService -> Mongo: Query station name
+Mongo --> StationService: Return station name
+StationService --> TravelPlanService: Return station name
+TravelPlanService -> SeatService: GET /seat/getLeftTicketOfInterval
+SeatService --> TravelPlanService: Return rest ticket number
+TravelPlanService -> TicketInfoService: GET /ticketinfo/queryForStationId
+TicketInfoService -> BasicService: GET /basic/queryForStationId
+BasicService --> TicketInfoService: Return station ID
+TicketInfoService -> StationService: GET /station/queryForId
+StationService -> Mongo: Query station ID
+Mongo --> StationService: Return station ID
+StationService --> TicketInfoService: Return station ID
+TicketInfoService --> TravelPlanService: Return station ID
+TravelPlanService --> User: Return quickest travel plan
+
+== Get Travel Plan with Minimum Stations ==
+User -> TravelPlanService: GET /travelPlan/getMinStation
+TravelPlanService -> RoutePlanService: GET /routePlan/minStopStations
+RoutePlanService --> TravelPlanService: Return route with min stations
+TravelPlanService -> StationService: GET /station/queryByIdForName
+StationService -> Mongo: Query station name
+Mongo --> StationService: Return station name
+StationService --> TravelPlanService: Return station name
+TravelPlanService -> SeatService: GET /seat/getLeftTicketOfInterval
+SeatService --> TravelPlanService: Return rest ticket number
+TravelPlanService -> TicketInfoService: GET /ticketinfo/queryForStationId
+TicketInfoService -> BasicService: GET /basic/queryForStationId
+BasicService --> TicketInfoService: Return station ID
+TicketInfoService -> StationService: GET /station/queryForId
+StationService -> Mongo: Query station ID
+Mongo --> StationService: Return station ID
+StationService --> TicketInfoService: Return station ID
+TicketInfoService --> TravelPlanService: Return station ID
+TravelPlanService --> User: Return travel plan with min stations
+@enduml

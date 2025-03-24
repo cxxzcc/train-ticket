@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-admin-user-service</OriginalElement>
+  <nodes>
+    <node x="33.0" y="246.0">adminuser.AdminUserApplication</node>
+    <node x="16.0" y="66.0">adminuser.domain.response.ModifyAccountResult</node>
+    <node x="-23.0" y="886.0">adminuser.domain.response.FindAllAccountResult</node>
+    <node x="226.5" y="626.0">adminuser.domain.bean.Gender</node>
+    <node x="-119.5" y="-14.0">adminuser.domain.request.AddAccountRequest</node>
+    <node x="-67.0" y="626.0">adminuser.service.AdminUserServiceImpl</node>
+    <node x="178.0" y="766.0">adminuser.domain.bean.DocumentType</node>
+    <node x="99.0" y="946.0">adminuser.domain.response.DeleteAccountResult</node>
+    <node x="-117.5" y="946.0">adminuser.domain.response.RegisterResult</node>
+    <node x="-31.0" y="706.0">adminuser.domain.request.AdminDeleteAccountRequest</node>
+    <node x="68.5" y="386.0">adminuser.service.AdminUserService</node>
+    <node x="-96.5" y="126.0">adminuser.domain.bean.ModifyAccountInfo</node>
+    <node x="-127.5" y="446.0">adminuser.domain.request.DeleteAccountRequest</node>
+    <node x="-110.5" y="306.0">adminuser.domain.request.UpdateAccountRequest</node>
+    <node x="58.0" y="566.0">adminuser.controller.AdminUserController</node>
+    <node x="-117.0" y="766.0">adminuser.domain.bean.Account</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="adminuser.domain.response.FindAllAccountResult" target="adminuser.domain.bean.Account" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="77.0" y="860.0" />
+      <point x="-43.0" y="860.0" />
+      <point x="-43.0" y="820.0" />
+      <point x="-63.0" y="820.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminuser.domain.response.DeleteAccountResult" target="adminuser.domain.bean.Account" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="197.0" y="860.0" />
+      <point x="-43.0" y="860.0" />
+      <point x="-43.0" y="820.0" />
+      <point x="-63.0" y="820.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminuser.controller.AdminUserController" target="adminuser.service.AdminUserService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="157.0" y="540.0" />
+      <point x="201.25" y="540.0" />
+      <point x="44.25" y="14.0" />
+    </edge>
+    <edge source="adminuser.service.AdminUserServiceImpl" target="adminuser.service.AdminUserService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="37.0" y="540.0" />
+      <point x="112.75" y="540.0" />
+      <point x="-44.25" y="14.0" />
+    </edge>
+    <edge source="adminuser.domain.response.RegisterResult" target="adminuser.domain.bean.Account" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-43.0" y="820.0" />
+      <point x="-63.0" y="820.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="adminuser.domain.request.UpdateAccountRequest" target="adminuser.domain.bean.ModifyAccountInfo" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.7579365079365079" showDependencies="true" x="114.0" y="490.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

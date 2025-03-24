@@ -1,0 +1,38 @@
+@startuml
+actor User
+participant "ts-admin-user-service" as AdminUserService
+participant "ts-sso-service" as SsoService
+participant "ts-account-mongo" as Mongo
+
+== Find All Users ==
+User -> AdminUserService: GET /adminuser/findAll/{id}
+AdminUserService -> SsoService: GET /account/findAll
+SsoService -> Mongo: Query accounts collection
+Mongo --> SsoService: Return accounts data
+SsoService --> AdminUserService: Return accounts data
+AdminUserService --> User: Return accounts data
+
+== Add User ==
+User -> AdminUserService: POST /adminuser/addUser
+AdminUserService -> SsoService: POST /account/register
+SsoService -> Mongo: Insert account data
+Mongo --> SsoService: Return insert result
+SsoService --> AdminUserService: Return insert result
+AdminUserService --> User: Return insert result
+
+== Update User ==
+User -> AdminUserService: PUT /adminuser/updateUser
+AdminUserService -> SsoService: PUT /account/modify
+SsoService -> Mongo: Update account data
+Mongo --> SsoService: Return update result
+SsoService --> AdminUserService: Return update result
+AdminUserService --> User: Return update result
+
+== Delete User ==
+User -> AdminUserService: DELETE /adminuser/deleteUser
+AdminUserService -> SsoService: DELETE /account/admindelete
+SsoService -> Mongo: Delete account data
+Mongo --> SsoService: Return delete result
+SsoService --> AdminUserService: Return delete result
+AdminUserService --> User: Return delete result
+@enduml

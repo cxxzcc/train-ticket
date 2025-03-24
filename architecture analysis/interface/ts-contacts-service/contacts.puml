@@ -1,0 +1,76 @@
+@startuml
+actor User
+participant "ts-admin-basic-info-service" as AdminService
+participant "ts-contacts-service" as ContactsService
+participant "ts-contacts-mongo" as ContactsMongo
+participant "ts-sso-service" as SsoService
+participant "ts-account-mongo" as AccountMongo
+
+== Create Contact (Admin) ==
+User -> AdminService: POST /adminbasic/addContacts
+AdminService -> ContactsService: POST /contacts/admincreate
+ContactsService -> ContactsMongo: Insert contacts data
+ContactsMongo --> ContactsService: Return insert result
+ContactsService --> AdminService: Return insert result
+AdminService --> User: Return insert result
+
+== Find All Contacts ==
+User -> AdminService: GET /adminbasic/getAllContacts/{id}
+AdminService -> ContactsService: GET /contacts/findAll
+ContactsService -> ContactsMongo: Query contacts collection
+ContactsMongo --> ContactsService: Return contacts data
+ContactsService --> AdminService: Return contacts data
+AdminService --> User: Return contacts data
+
+== Modify Contact ==
+User -> AdminService: PUT /adminbasic/modifyContacts
+AdminService -> ContactsService: PUT /contacts/modifyContacts
+ContactsService -> ContactsMongo: Update contacts data
+ContactsMongo --> ContactsService: Return update result
+ContactsService --> AdminService: Return update result
+AdminService --> User: Return update result
+
+== Delete Contact ==
+User -> AdminService: DELETE /adminbasic/deleteContacts
+AdminService -> ContactsService: DELETE /contacts/deleteContacts
+ContactsService -> ContactsMongo: Delete contacts data
+ContactsMongo --> ContactsService: Return delete result
+ContactsService --> AdminService: Return delete result
+AdminService --> User: Return delete result
+
+== Find Contacts (with SSO Verification) ==
+User -> AdminService: GET /adminbasic/findContacts
+AdminService -> ContactsService: GET /contacts/findContacts
+ContactsService -> SsoService: POST /verifyLoginToken
+SsoService -> AccountMongo: Verify token in login_user_list
+AccountMongo --> SsoService: Return verification result
+SsoService --> ContactsService: Return verification result
+ContactsService -> ContactsMongo: Query contacts collection
+ContactsMongo --> ContactsService: Return contacts data
+ContactsService --> AdminService: Return contacts data
+AdminService --> User: Return contacts data
+
+== Get Contact by ID (with SSO Verification) ==
+User -> AdminService: GET /adminbasic/getContactsById
+AdminService -> ContactsService: GET /contacts/getContactsById
+ContactsService -> SsoService: POST /verifyLoginToken
+SsoService -> AccountMongo: Verify token in login_user_list
+AccountMongo --> SsoService: Return verification result
+SsoService --> ContactsService: Return verification result
+ContactsService -> ContactsMongo: Query contacts collection
+ContactsMongo --> ContactsService: Return contact data
+ContactsService --> AdminService: Return contact data
+AdminService --> User: Return contact data
+
+== Create Contact (with SSO Verification) ==
+User -> AdminService: POST /adminbasic/create
+AdminService -> ContactsService: POST /contacts/create
+ContactsService -> SsoService: POST /verifyLoginToken
+SsoService -> AccountMongo: Verify token in login_user_list
+AccountMongo --> SsoService: Return verification result
+SsoService --> ContactsService: Return verification result
+ContactsService -> ContactsMongo: Insert contacts data
+ContactsMongo --> ContactsService: Return insert result
+ContactsService --> AdminService: Return insert result
+AdminService --> User: Return insert result
+@enduml

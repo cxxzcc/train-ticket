@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-config-service</OriginalElement>
+  <nodes>
+    <node x="64.0" y="66.0">config.domain.Information2</node>
+    <node x="-89.0" y="446.0">config.controller.ConfigController</node>
+    <node x="-74.0" y="126.0">config.ConfigApplication</node>
+    <node x="42.0" y="386.0">config.init.InitData</node>
+    <node x="149.0" y="266.0">config.repository.ConfigRepository</node>
+    <node x="126.0" y="446.0">config.service.ConfigServiceImpl</node>
+    <node x="-74.0" y="266.0">config.domain.Config</node>
+    <node x="-72.0" y="-14.0">config.domain.Information</node>
+    <node x="21.5" y="206.0">config.service.ConfigService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="config.service.ConfigServiceImpl" target="config.repository.ConfigRepository" relationship="TO_ONE">
+      <point x="44.5" y="-14.0" />
+      <point x="259.5" y="420.0" />
+      <point x="235.0" y="420.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="config.controller.ConfigController" target="config.service.ConfigService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-5.0" y="360.0" />
+      <point x="55.0" y="360.0" />
+      <point x="55.0" y="260.0" />
+      <point x="58.25" y="260.0" />
+      <point x="-36.75" y="14.0" />
+    </edge>
+    <edge source="config.init.InitData" target="config.service.ConfigService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="95.0" y="360.0" />
+      <point x="55.0" y="360.0" />
+      <point x="55.0" y="260.0" />
+      <point x="58.25" y="260.0" />
+      <point x="-36.75" y="14.0" />
+    </edge>
+    <edge source="config.service.ConfigServiceImpl" target="config.service.ConfigService" relationship="REALIZATION">
+      <point x="-44.5" y="-14.0" />
+      <point x="170.5" y="360.0" />
+      <point x="131.75" y="360.0" />
+      <point x="36.75" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="1.5" showDependencies="true" x="126.0" y="240.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

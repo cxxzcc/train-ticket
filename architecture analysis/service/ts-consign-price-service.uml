@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-consign-price-service</OriginalElement>
+  <nodes>
+    <node x="-127.0" y="366.0">consignprice.controller.ConsignPriceController</node>
+    <node x="148.0" y="366.0">consignprice.service.ConsignPriceServiceImpl</node>
+    <node x="-16.5" y="186.0">consignprice.service.ConsignPriceService</node>
+    <node x="66.0" y="306.0">consignprice.init.InitData</node>
+    <node x="137.0" y="46.0">consignprice.domain.GetPriceDomain</node>
+    <node x="53.5" y="-14.0">consignprice.domain.PriceConfig</node>
+    <node x="107.0" y="126.0">consignprice.repository.ConsignPriceConfigRepository</node>
+    <node x="-132.0" y="46.0">consignprice.ConsignPriceApplication</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="consignprice.service.ConsignPriceServiceImpl" target="consignprice.service.ConsignPriceService" relationship="REALIZATION">
+      <point x="-55.5" y="-14.0" />
+      <point x="203.5" y="260.0" />
+      <point x="126.75" y="260.0" />
+      <point x="47.75" y="14.0" />
+    </edge>
+    <edge source="consignprice.service.ConsignPriceServiceImpl" target="consignprice.repository.ConsignPriceConfigRepository" relationship="TO_ONE">
+      <point x="55.5" y="-14.0" />
+      <point x="314.5" y="340.0" />
+      <point x="239.0" y="340.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="consignprice.controller.ConsignPriceController" target="consignprice.service.ConsignPriceService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-21.0" y="280.0" />
+      <point x="39.0" y="280.0" />
+      <point x="39.0" y="240.0" />
+      <point x="31.25" y="240.0" />
+      <point x="-47.75" y="14.0" />
+    </edge>
+    <edge source="consignprice.init.InitData" target="consignprice.service.ConsignPriceService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="119.0" y="280.0" />
+      <point x="39.0" y="280.0" />
+      <point x="39.0" y="240.0" />
+      <point x="31.25" y="240.0" />
+      <point x="-47.75" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="1.5" showDependencies="true" x="129.5" y="200.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

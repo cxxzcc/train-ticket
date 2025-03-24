@@ -1,0 +1,31 @@
+@startuml
+actor User
+participant "ts-register-service" as RegisterService
+participant "ts-verification-code-service" as VerificationService
+participant "ts-sso-service" as SSOService
+participant "ts-account-mongo" as AccountDB
+participant "ts-inside-payment-service" as PaymentService
+participant "ts-inside-payment-mongo" as PaymentDB
+
+== Registration Flow ==
+
+User -> RegisterService: POST /register (Start registration)
+RegisterService -> VerificationService: POST /verification/verify (Validate code)
+VerificationService --> RegisterService: Return verification result
+
+alt Verification Success
+  RegisterService -> SSOService: POST /account/register (Create account)
+  SSOService -> AccountDB: Insert into `accounts` collection
+  AccountDB --> SSOService: Return account data
+  SSOService --> RegisterService: Return account creation status
+
+  RegisterService -> PaymentService: POST /inside_payment/createAccount (Setup payment)
+  PaymentService -> PaymentDB: Insert into `addMoney` collection
+  PaymentDB --> PaymentService: Return payment data
+  PaymentService --> RegisterService: Return payment setup status
+
+  RegisterService --> User: Return full registration success
+else Verification Failed
+  RegisterService --> User: Return error (Invalid code)
+end
+@enduml

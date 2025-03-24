@@ -1,0 +1,65 @@
+@startuml
+actor User
+participant "ts-admin-travel-service" as AdminTravelService
+participant "ts-travel-service" as TravelService
+participant "ts-travel2-service" as Travel2Service
+participant "ts-travel-mongo" as TravelMongo
+participant "ts-travel2-mongo" as Travel2Mongo
+
+== Query All Travel Information ==
+User -> AdminTravelService: GET /admintravel/findAll/{id}
+AdminTravelService -> TravelService: GET /travel/adminQueryAll
+TravelService -> TravelMongo: Query trip data
+TravelMongo --> TravelService: Return trip data
+AdminTravelService -> Travel2Service: GET /travel2/adminQueryAll
+Travel2Service -> Travel2Mongo: Query trip data
+Travel2Mongo --> Travel2Service: Return trip data
+TravelService --> AdminTravelService: Return trip data
+Travel2Service --> AdminTravelService: Return trip data
+AdminTravelService --> User: Return combined trip data
+
+== Add Travel Information ==
+User -> AdminTravelService: POST /admintravel/addTravel
+alt TrainTypeId starts with 'G' or 'D'
+    AdminTravelService -> TravelService: POST /travel/create
+    TravelService -> TravelMongo: Insert trip data
+    TravelMongo --> TravelService: Return insert result
+    TravelService --> AdminTravelService: Return insert result
+else
+    AdminTravelService -> Travel2Service: POST /travel2/create
+    Travel2Service -> Travel2Mongo: Insert trip data
+    Travel2Mongo --> Travel2Service: Return insert result
+    Travel2Service --> AdminTravelService: Return insert result
+end
+AdminTravelService --> User: Return insert result
+
+== Update Travel Information ==
+User -> AdminTravelService: PUT /admintravel/updateTravel
+alt TrainTypeId starts with 'G' or 'D'
+    AdminTravelService -> TravelService: PUT /travel/update
+    TravelService -> TravelMongo: Update trip data
+    TravelMongo --> TravelService: Return update result
+    TravelService --> AdminTravelService: Return update result
+else
+    AdminTravelService -> Travel2Service: PUT /travel2/update
+    Travel2Service -> Travel2Mongo: Update trip data
+    Travel2Mongo --> Travel2Service: Return update result
+    Travel2Service --> AdminTravelService: Return update result
+end
+AdminTravelService --> User: Return update result
+
+== Delete Travel Information ==
+User -> AdminTravelService: DELETE /admintravel/deleteTravel
+alt TrainTypeId starts with 'G' or 'D'
+    AdminTravelService -> TravelService: DELETE /travel/delete
+    TravelService -> TravelMongo: Delete trip data
+    TravelMongo --> TravelService: Return delete result
+    TravelService --> AdminTravelService: Return delete result
+else
+    AdminTravelService -> Travel2Service: DELETE /travel2/delete
+    Travel2Service -> Travel2Mongo: Delete trip data
+    Travel2Mongo --> Travel2Service: Return delete result
+    Travel2Service --> AdminTravelService: Return delete result
+end
+AdminTravelService --> User: Return delete result
+@enduml

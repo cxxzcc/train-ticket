@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-ticketinfo-service</OriginalElement>
+  <nodes>
+    <node x="56.0" y="286.0">ticketinfo.domain.ResultForTravel</node>
+    <node x="15.0" y="786.0">ticketinfo.service.TicketInfoServiceImpl</node>
+    <node x="36.0" y="466.0">ticketinfo.domain.QueryForTravel</node>
+    <node x="-94.5" y="526.0">ticketinfo.domain.QueryForStationId</node>
+    <node x="9.5" y="166.0">ticketinfo.domain.TripId</node>
+    <node x="-89.5" y="666.0">ticketinfo.service.TicketInfoService</node>
+    <node x="75.0" y="106.0">ticketinfo.domain.TrainType</node>
+    <node x="15.0" y="606.0">ticketinfo.TicketInfoApplication</node>
+    <node x="-64.0" y="346.0">ticketinfo.domain.Trip</node>
+    <node x="13.0" y="-14.0">ticketinfo.domain.Type</node>
+    <node x="-100.0" y="846.0">ticketinfo.controller.TicketInfoController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ticketinfo.domain.ResultForTravel" target="ticketinfo.domain.TrainType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ticketinfo.controller.TicketInfoController" target="ticketinfo.service.TicketInfoService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-5.0" y="820.0" />
+      <point x="-47.25" y="820.0" />
+      <point x="-42.25" y="14.0" />
+    </edge>
+    <edge source="ticketinfo.domain.TripId" target="ticketinfo.domain.Type" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ticketinfo.service.TicketInfoServiceImpl" target="ticketinfo.service.TicketInfoService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="115.0" y="760.0" />
+      <point x="37.25" y="760.0" />
+      <point x="42.25" y="14.0" />
+    </edge>
+    <edge source="ticketinfo.domain.Trip" target="ticketinfo.domain.TripId" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-25.0" y="140.0" />
+      <point x="55.0" y="140.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="ticketinfo.domain.QueryForTravel" target="ticketinfo.domain.Trip" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="115.0" y="440.0" />
+      <point x="-85.0" y="440.0" />
+      <point x="-85.0" y="320.0" />
+      <point x="-25.0" y="320.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.8524229074889867" showDependencies="true" x="67.5" y="440.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

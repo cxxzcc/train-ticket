@@ -1,0 +1,37 @@
+@startuml
+actor User
+participant "ts-admin-basic-info-service" as AdminService
+participant "ts-price-service" as PriceService
+participant "ts-price-mongo" as PriceMongo
+=== Get All Prices ===
+User -> AdminService: GET /adminbasic/getAllPrices/{id}
+AdminService -> PriceService: GET /price/queryAll
+PriceService -> PriceMongo: Query price_config collection
+PriceMongo --> PriceService: Return price data
+PriceService --> AdminService: Return price data
+AdminService --> User: Return price data
+
+=== Delete Price ===
+User -> AdminService: DELETE /adminbasic/deletePrice
+AdminService -> PriceService: DELETE /price/delete
+PriceService -> PriceMongo: Delete price data
+PriceMongo --> PriceService: Return delete result
+PriceService --> AdminService: Return delete result
+AdminService --> User: Return delete result
+
+=== Modify Price ===
+User -> AdminService: PUT /adminbasic/modifyPrice
+AdminService -> PriceService: PUT /price/update
+PriceService -> PriceMongo: Update price data
+PriceMongo --> PriceService: Return update result
+PriceService --> AdminService: Return update result
+AdminService --> User: Return update result
+
+=== Add Price ===
+User -> AdminService: POST /adminbasic/addPrice
+AdminService -> PriceService: POST /price/create
+PriceService -> PriceMongo: Insert price data
+PriceMongo --> PriceService: Return insert result
+PriceService --> AdminService: Return insert result
+AdminService --> User: Return insert result
+@enduml

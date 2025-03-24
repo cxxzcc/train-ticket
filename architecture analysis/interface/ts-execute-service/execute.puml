@@ -1,0 +1,56 @@
+@startuml
+actor User
+participant "ts-execute-service" as ExecuteService
+participant "ts-order-service" as OrderService
+participant "ts-order-mongo" as OrderMongo
+participant "ts-order-other-service" as OrderOtherService
+participant "ts-order-other-mongo" as OrderOtherMongo
+
+== Execute Order ==
+User -> ExecuteService: POST /execute/execute
+ExecuteService -> OrderService: GET /order/getById/
+OrderService -> OrderMongo: Query orders collection
+OrderMongo --> OrderService: Return order data
+alt Order status is true
+    OrderService --> ExecuteService: Return order data (status=true)
+    ExecuteService -> OrderService: POST /order/modifyOrderStatus
+    OrderService -> OrderMongo: Update order status
+    OrderMongo --> OrderService: Return update result
+    OrderService --> ExecuteService: Return update result
+else Order status is false
+    OrderService --> ExecuteService: Return order data (status=false)
+    ExecuteService -> OrderOtherService: GET /orderOther/getById/
+    OrderOtherService -> OrderOtherMongo: Query orders collection
+    OrderOtherMongo --> OrderOtherService: Return order data
+    OrderOtherService --> ExecuteService: Return order data
+    ExecuteService -> OrderOtherService: POST /orderOther/modifyOrderStatus
+    OrderOtherService -> OrderOtherMongo: Update order status
+    OrderOtherMongo --> OrderOtherService: Return update result
+    OrderOtherService --> ExecuteService: Return update result
+end
+ExecuteService --> User: Return execution result
+
+== Execute Collected Order ==
+User -> ExecuteService: POST /execute/collected
+ExecuteService -> OrderService: GET /order/getById/
+OrderService -> OrderMongo: Query orders collection
+OrderMongo --> OrderService: Return order data
+alt Order status is true
+    OrderService --> ExecuteService: Return order data (status=true)
+    ExecuteService -> OrderService: POST /order/modifyOrderStatus
+    OrderService -> OrderMongo: Update order status
+    OrderMongo --> OrderService: Return update result
+    OrderService --> ExecuteService: Return update result
+else Order status is false
+    OrderService --> ExecuteService: Return order data (status=false)
+    ExecuteService -> OrderOtherService: GET /orderOther/getById/
+    OrderOtherService -> OrderOtherMongo: Query orders collection
+    OrderOtherMongo --> OrderOtherService: Return order data
+    OrderOtherService --> ExecuteService: Return order data
+    ExecuteService -> OrderOtherService: POST /orderOther/modifyOrderStatus
+    OrderOtherService -> OrderOtherMongo: Update order status
+    OrderOtherMongo --> OrderOtherService: Return update result
+    OrderOtherService --> ExecuteService: Return update result
+end
+ExecuteService --> User: Return execution result
+@enduml

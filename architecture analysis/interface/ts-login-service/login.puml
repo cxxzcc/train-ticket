@@ -1,0 +1,25 @@
+@startuml
+actor User
+participant "ts-login-service" as LoginService
+participant "ts-verification-code-service" as VerificationService
+participant "ts-sso-service" as SsoService
+participant "ts-account-mongo" as Mongo
+
+== Login ==
+User -> LoginService: POST /login
+LoginService -> VerificationService: POST /verification/verify
+VerificationService --> LoginService: Return verification result
+LoginService -> SsoService: POST /account/login
+SsoService -> Mongo: Query accounts collection
+Mongo --> SsoService: Return account data
+SsoService --> LoginService: Return login result
+LoginService --> User: Return login result
+
+== Logout ==
+User -> LoginService: POST /logout
+LoginService -> SsoService: POST /logout
+SsoService -> Mongo: Update login_user_list
+Mongo --> SsoService: Return logout result
+SsoService --> LoginService: Return logout result
+LoginService --> User: Return logout result
+@enduml

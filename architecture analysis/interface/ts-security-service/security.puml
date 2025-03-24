@@ -1,0 +1,44 @@
+@startuml
+actor User
+participant "ts-security-service" as SecurityService
+participant "ts-security-mongo" as SecurityMongo
+participant "ts-order-service" as OrderService
+participant "ts-order-other-service" as OrderOtherService
+participant "ts-order-other-mongo" as OrderOtherMongo
+
+== Find All Security Configurations ==
+User -> SecurityService: GET /securityConfig/findAll
+SecurityService -> SecurityMongo: Query security_config collection
+SecurityMongo --> SecurityService: Return security configurations
+SecurityService --> User: Return security configurations
+
+== Create Security Configuration ==
+User -> SecurityService: POST /securityConfig/create
+SecurityService -> SecurityMongo: Insert into security_config
+SecurityMongo --> SecurityService: Return insert result
+SecurityService --> User: Return insert result
+
+== Update Security Configuration ==
+User -> SecurityService: PUT /securityConfig/update
+SecurityService -> SecurityMongo: Update security_config
+SecurityMongo --> SecurityService: Return update result
+SecurityService --> User: Return update result
+
+== Delete Security Configuration ==
+User -> SecurityService: DELETE /securityConfig/delete
+SecurityService -> SecurityMongo: Delete from security_config
+SecurityMongo --> SecurityService: Return delete result
+SecurityService --> User: Return delete result
+
+== Security Check ==
+User -> SecurityService: POST /security/check
+SecurityService -> SecurityMongo: Query security_config
+SecurityMongo --> SecurityService: Return security rules
+SecurityService -> OrderService: GET /getOrderInfoForSecurity
+OrderService --> SecurityService: Return order data
+SecurityService -> OrderOtherService: GET /getOrderOtherInfoForSecurity
+OrderOtherService -> OrderOtherMongo: Query orders
+OrderOtherMongo --> OrderOtherService: Return order data
+OrderOtherService --> SecurityService: Return order data
+SecurityService --> User: Return security check result
+@enduml

@@ -1,0 +1,139 @@
+@startuml
+actor User
+participant "ts-travel-service" as travel
+participant "ts-travel-mongo" as travelDB
+participant "ts-route-service" as RouteService
+participant "ts-route-mongo" as RouteDB
+participant "ts-train-service" as TrainService
+participant "ts-train-mongo" as TrainDB
+participant "ts-ticketinfo-service" as TicketInfo
+participant "ts-basic-service" as BasicService
+participant "ts-station-service" as StationService
+participant "ts-station-mongo" as StationDB
+participant "ts-price-service" as PriceService
+participant "ts-price-mongo" as PriceDB
+participant "ts-order-other-service" as OrderOther
+participant "ts-order-other-mongo" as OrderOtherDB
+participant "ts-seat-service" as SeatService
+participant "ts-travel-service" as TravelService
+participant "ts-order-service" as OrderService
+participant "ts-config-service" as ConfigService
+participant "ts-config-mongo" as ConfigDB
+
+== Basic Operations ==
+
+User -> travel: GET /travel/adminQueryAll
+travel -> travelDB: Query all trips (trip)
+travelDB --> travel: Return trip data
+travel --> User: Return results
+
+User -> travel: POST /travel/create
+travel -> travelDB: Insert new trip (trip)
+travelDB --> travel: Confirm insertion
+travel --> User: Return success
+
+User -> travel: DELETE /travel/delete
+travel -> travelDB: Delete trip (trip)
+travelDB --> travel: Confirm deletion
+travel --> User: Return success
+
+User -> travel: GET /travel/queryAll
+travel -> travelDB: Query all trips (trip)
+travelDB --> travel: Return trip data
+travel --> User: Return results
+
+User -> travel: GET /travel/retrieve
+travel -> travelDB: Retrieve trip (trip)
+travelDB --> travel: Return trip data
+travel --> User: Return results
+
+User -> travel: PUT /travel/update
+travel -> travelDB: Update trip (trip)
+travelDB --> travel: Confirm update
+travel --> User: Return success
+
+== Route and Train Type Queries ==
+
+User -> travel: GET /travel/getRouteByTripId/{tripId}
+travel -> travelDB: Query trip (trip)
+travelDB --> travel: Return routeId
+travel -> RouteService: GET /route/queryById/{routeId}
+RouteService -> RouteDB: Query route (routes)
+RouteDB --> RouteService: Return route data
+RouteService --> travel: Return route
+travel --> User: Return route
+
+User -> travel: GET /travel/getTrainTypeByTripId/{tripId}
+travel -> travelDB: Query trip (trip)
+travelDB --> travel: Return trainTypeId
+travel -> TrainService: GET /train/retrieve/{trainTypeId}
+TrainService -> TrainDB: Query trainType (trainType)
+TrainDB --> TrainService: Return trainType
+TrainService --> travel: Return data
+travel --> User: Return trainType
+
+== Complex Query: /travel/query & Related APIs ==
+
+User -> travel: GET /travel/queryWithPackage
+travel -> TicketInfo: GET /ticketinfo/queryForTravel
+TicketInfo -> BasicService: GET /basic/queryForTravel
+BasicService -> StationService: GET /station/exist
+StationService -> StationDB: Check station existence (station)
+StationDB --> StationService: Return result
+StationService --> BasicService: Return result
+BasicService --> TicketInfo: Return data
+TicketInfo -> TrainService: GET /train/retrieve
+TrainService -> TrainDB: Query trainType (trainType)
+TrainDB --> TrainService: Return data
+TrainService --> TicketInfo: Return data
+TicketInfo -> RouteService: GET /route/queryById/
+RouteService -> RouteDB: Query route (routes)
+RouteDB --> RouteService: Return data
+RouteService --> TicketInfo: Return route
+TicketInfo -> PriceService: GET /price/query
+PriceService -> PriceDB: Query price_config
+PriceDB --> PriceService: Return data
+PriceService --> TicketInfo: Return price
+TicketInfo -> OrderOther: GET /orderOther/calculate
+OrderOther -> OrderOtherDB: Query orders
+OrderOtherDB --> OrderOther: Return data
+OrderOther --> TicketInfo: Return result
+TicketInfo --> travel: Return aggregated data
+travel --> User: Final response
+
+alt High-speed train (G/D prefix)
+  travel -> SeatService: GET /seat/getLeftTicketOfInterval
+  SeatService -> TravelService: GET /travel/getRouteByTripId/
+  TravelService -> TravelDB: Query trip
+  TravelDB --> TravelService: Return route
+  TravelService --> SeatService: Return route
+  SeatService -> OrderService: GET /order/getTicketListByDateAndTripId
+  OrderService -> OrderDB: Query orders
+  OrderDB --> OrderService: Return data
+  OrderService --> SeatService: Return tickets
+  SeatService -> TravelService: GET /travel/getTrainTypeByTripId/
+  TravelService -> TravelDB: Query trip
+  TravelDB --> TravelService: Return trainType
+  TravelService --> SeatService: Return data
+else Other trains
+  SeatService -> travel: GET /travel/getRouteByTripId/
+  travel -> travelDB: Query trip
+  travelDB --> travel: Return route
+  travel --> SeatService: Return route
+  SeatService -> OrderOther: GET /orderOther/getTicketListByDateAndTripId
+  OrderOther -> OrderOtherDB: Query orders
+  OrderOtherDB --> OrderOther: Return data
+  OrderOther --> SeatService: Return tickets
+  SeatService -> travel: GET /travel/getTrainTypeByTripId/
+  travel -> travelDB: Query trip
+  travelDB --> travel: Return trainType
+  travel --> SeatService: Return data
+end
+SeatService -> ConfigService: GET /config/query
+ConfigService -> ConfigDB: Query config
+ConfigDB --> ConfigService: Return data
+ConfigService --> SeatService: Return proportion
+SeatService --> travel: Return ticket availability
+travel --> User: Final response
+
+@enduml

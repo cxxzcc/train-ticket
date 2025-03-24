@@ -1,0 +1,35 @@
+@startuml
+actor User
+participant "ts-train-service" as TrainService
+participant "ts-train-mongo" as TrainMongo
+
+== Create Train ==
+User -> TrainService: POST /train/create
+TrainService -> TrainMongo: Insert trainType data
+TrainMongo --> TrainService: Return insert result
+TrainService --> User: Return create result
+
+== Retrieve Train ==
+User -> TrainService: GET /train/retrieve
+TrainService -> TrainMongo: Query train data
+TrainMongo --> TrainService: Return train data
+TrainService --> User: Return train data
+
+== Update Train ==
+User -> TrainService: PUT /train/update
+TrainService -> TrainMongo: Update train data
+TrainMongo --> TrainService: Return update result
+TrainService --> User: Return update result
+
+== Delete Train ==
+User -> TrainService: DELETE /train/delete
+TrainService -> TrainMongo: Delete train data
+TrainMongo --> TrainService: Return delete result
+TrainService --> User: Return delete result
+
+== Query Train ==
+User -> TrainService: GET /train/query
+TrainService -> TrainMongo: Query train data (filtered)
+TrainMongo --> TrainService: Return filtered train data
+TrainService --> User: Return query result
+@enduml

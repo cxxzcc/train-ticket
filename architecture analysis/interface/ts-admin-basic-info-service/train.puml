@@ -1,0 +1,38 @@
+@startuml
+actor User
+participant "ts-admin-basic-info-service" as AdminService
+participant "ts-train-service" as TrainService
+participant "ts-train-mongo" as Mongo
+
+== Query All Trains ==
+User -> AdminService: GET /adminbasic/getAllTrains/{id}
+AdminService -> TrainService: GET /train/query
+TrainService -> Mongo: Query trainType collection
+Mongo --> TrainService: Return train data
+TrainService --> AdminService: Return train data
+AdminService --> User: Return train data
+
+== Delete Train ==
+User -> AdminService: DELETE /adminbasic/deleteTrain
+AdminService -> TrainService: DELETE /train/delete
+TrainService -> Mongo: Delete train data
+Mongo --> TrainService: Return delete result
+TrainService --> AdminService: Return delete result
+AdminService --> User: Return delete result
+
+== Modify Train ==
+User -> AdminService: PUT /adminbasic/modifyTrain
+AdminService -> TrainService: PUT /train/update
+TrainService -> Mongo: Update train data
+Mongo --> TrainService: Return update result
+TrainService --> AdminService: Return update result
+AdminService --> User: Return update result
+
+== Add Train ==
+User -> AdminService: POST /adminbasic/addTrain
+AdminService -> TrainService: POST /train/create
+TrainService -> Mongo: Insert train data
+Mongo --> TrainService: Return insert result
+TrainService --> AdminService: Return insert result
+AdminService --> User: Return insert result
+@enduml

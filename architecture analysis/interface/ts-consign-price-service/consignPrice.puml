@@ -1,0 +1,29 @@
+@startuml
+actor User
+participant "ts-consign-price-service" as ConsignPriceService
+participant "ts-consign-price-mongo" as Mongo
+
+== Get Price ==
+User -> ConsignPriceService: GET /consignPrice/getPrice
+ConsignPriceService -> Mongo: Query consign_price collection
+Mongo --> ConsignPriceService: Return price data
+ConsignPriceService --> User: Return price data
+
+== Get Price Info ==
+User -> ConsignPriceService: GET /consignPrice/getPriceInfo
+ConsignPriceService -> Mongo: Query consign_price collection
+Mongo --> ConsignPriceService: Return price info
+ConsignPriceService --> User: Return price info
+
+== Get Price Config ==
+User -> ConsignPriceService: GET /consignPrice/getPriceConfig
+ConsignPriceService -> Mongo: Query consign_price collection
+Mongo --> ConsignPriceService: Return price config
+ConsignPriceService --> User: Return price config
+
+== Modify Price Config ==
+User -> ConsignPriceService: PUT /consignPrice/modifyPriceConfig
+ConsignPriceService -> Mongo: Update consign_price collection
+Mongo --> ConsignPriceService: Return update result
+ConsignPriceService --> User: Return update result
+@enduml

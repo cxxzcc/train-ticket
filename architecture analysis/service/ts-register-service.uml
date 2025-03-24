@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-register-service</OriginalElement>
+  <nodes>
+    <node x="-116.5" y="626.0">register.service.RegisterServiceImpl</node>
+    <node x="-61.0" y="446.0">register.service.RegisterService</node>
+    <node x="43.5" y="386.0">register.RegisterApplication</node>
+    <node x="70.0" y="166.0">register.domain.RegisterInfo</node>
+    <node x="18.0" y="246.0">register.domain.DocumentType</node>
+    <node x="0.0" y="566.0">register.controller.AccountRegisterController</node>
+    <node x="-17.0" y="-14.0">register.domain.Account</node>
+    <node x="-113.5" y="166.0">register.domain.Gender</node>
+    <node x="-113.5" y="306.0">register.domain.CreateAccountInfo</node>
+    <node x="-37.5" y="106.0">register.domain.RegisterResult</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="register.domain.RegisterResult" target="register.domain.Account" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="register.controller.AccountRegisterController" target="register.service.RegisterService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="117.0" y="540.0" />
+      <point x="56.0" y="540.0" />
+      <point x="39.0" y="14.0" />
+    </edge>
+    <edge source="register.service.RegisterServiceImpl" target="register.service.RegisterService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-23.0" y="540.0" />
+      <point x="-22.0" y="540.0" />
+      <point x="-39.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="1.1104651162790697" showDependencies="true" x="68.5" y="330.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

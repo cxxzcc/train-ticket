@@ -1,0 +1,38 @@
+@startuml
+actor User
+participant "ts-admin-basic-info-service" as AdminService
+participant "ts-contacts-service" as ContactsService
+participant "ts-contacts-mongo" as Mongo
+
+== getAllContacts ==
+User -> AdminService: GET /adminbasic/getAllContacts/{id}
+AdminService -> ContactsService: GET /contacts/findAll
+ContactsService -> Mongo: Query contacts collection
+Mongo --> ContactsService: Return contacts data
+ContactsService --> AdminService: Return contacts data
+AdminService --> User: Return contacts data
+
+== deleteContacts ==
+User -> AdminService: DELETE /adminbasic/deleteContacts
+AdminService -> ContactsService: DELETE /contacts/deleteContacts
+ContactsService -> Mongo: Delete contacts data
+Mongo --> ContactsService: Return delete result
+ContactsService --> AdminService: Return delete result
+AdminService --> User: Return delete result
+
+== modifyContacts ==
+User -> AdminService: PUT /adminbasic/modifyContacts
+AdminService -> ContactsService: PUT /contacts/modifyContacts
+ContactsService -> Mongo: Update contacts data
+Mongo --> ContactsService: Return update result
+ContactsService --> AdminService: Return update result
+AdminService --> User: Return update result
+
+== addContacts ==
+User -> AdminService: POST /adminbasic/addContacts
+AdminService -> ContactsService: POST /contacts/admincreate
+ContactsService -> Mongo: Insert contacts data
+Mongo --> ContactsService: Return insert result
+ContactsService --> AdminService: Return insert result
+AdminService --> User: Return insert result
+@enduml

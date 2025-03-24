@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-security-service</OriginalElement>
+  <nodes>
+    <node x="31.5" y="46.0">security.domain.CheckInfo</node>
+    <node x="219.5" y="126.0">security.domain.DeleteConfigResult</node>
+    <node x="79.0" y="446.0">security.init.initData</node>
+    <node x="278.5" y="446.0">security.service.SecurityServiceImpl</node>
+    <node x="13.0" y="766.0">security.domain.GetAllSecurityConfigResult</node>
+    <node x="125.0" y="186.0">security.domain.OrderStatus</node>
+    <node x="174.0" y="326.0">security.service.SecurityService</node>
+    <node x="7.0" y="126.0">security.domain.DeleteConfigInfo</node>
+    <node x="281.5" y="266.0">security.repository.SecurityRepository</node>
+    <node x="1.5" y="266.0">security.domain.GetOrderInfoForSecurity</node>
+    <node x="160.0" y="646.0">security.domain.GetOrderInfoForSecurityResult</node>
+    <node x="-33.0" y="-14.0">security.domain.Order</node>
+    <node x="163.5" y="506.0">security.controller.SecurityController</node>
+    <node x="151.5" y="826.0">security.domain.CreateSecurityConfigResult</node>
+    <node x="16.0" y="586.0">security.domain.UpdateSecurityConfigInfo</node>
+    <node x="-126.0" y="46.0">security.domain.SeatClass</node>
+    <node x="-131.5" y="826.0">security.domain.UpdateSecurityConfigResult</node>
+    <node x="-96.0" y="326.0">security.domain.CheckResult</node>
+    <node x="-121.5" y="186.0">security.SecurityApplication</node>
+    <node x="-85.0" y="646.0">security.domain.SecurityConfig</node>
+    <node x="-121.0" y="506.0">security.domain.CreateSecurityConfigInfo</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="security.controller.SecurityController" target="security.service.SecurityService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="252.0" y="420.0" />
+      <point x="212.0" y="420.0" />
+      <point x="212.0" y="380.0" />
+      <point x="213.0" y="380.0" />
+      <point x="-39.0" y="14.0" />
+    </edge>
+    <edge source="security.service.SecurityServiceImpl" target="security.repository.SecurityRepository" relationship="TO_ONE">
+      <point x="46.75" y="-14.0" />
+      <point x="418.75" y="420.0" />
+      <point x="372.0" y="420.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="security.domain.UpdateSecurityConfigResult" target="security.domain.SecurityConfig" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="security.service.SecurityServiceImpl" target="security.service.SecurityService" relationship="REALIZATION">
+      <point x="-46.75" y="-14.0" />
+      <point x="325.25" y="420.0" />
+      <point x="291.0" y="420.0" />
+      <point x="39.0" y="14.0" />
+    </edge>
+    <edge source="security.init.initData" target="security.service.SecurityService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="132.0" y="420.0" />
+      <point x="212.0" y="420.0" />
+      <point x="212.0" y="380.0" />
+      <point x="213.0" y="380.0" />
+      <point x="-39.0" y="14.0" />
+    </edge>
+    <edge source="security.domain.GetAllSecurityConfigResult" target="security.domain.SecurityConfig" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="132.0" y="740.0" />
+      <point x="-8.0" y="740.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="security.domain.CreateSecurityConfigResult" target="security.domain.SecurityConfig" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="272.0" y="740.0" />
+      <point x="-8.0" y="740.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.8603603603603603" showDependencies="true" x="177.0" y="430.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

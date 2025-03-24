@@ -1,0 +1,39 @@
+@startuml
+actor User
+participant "ts-admin-basic-info-service" as AdminService
+participant "ts-config-service" as ConfigService
+participant "ts-config-mongo" as ConfigMongo
+
+=== Get All Configs ===
+User -> AdminService: GET /adminbasic/getAllConfigs/{id}
+AdminService -> ConfigService: GET /config/queryAll
+ConfigService -> ConfigMongo: Query config collection
+ConfigMongo --> ConfigService: Return config data
+ConfigService --> AdminService: Return config data
+AdminService --> User: Return config data
+
+=== Delete Config ===
+User -> AdminService: DELETE /adminbasic/deleteConfig
+AdminService -> ConfigService: DELETE /config/delete
+ConfigService -> ConfigMongo: Delete config data
+ConfigMongo --> ConfigService: Return delete result
+ConfigService --> AdminService: Return delete result
+AdminService --> User: Return delete result
+
+=== Modify Config ===
+User -> AdminService: PUT /adminbasic/modifyConfig
+AdminService -> ConfigService: PUT /config/update
+ConfigService -> ConfigMongo: Update config data
+ConfigMongo --> ConfigService: Return update result
+ConfigService --> AdminService: Return update result
+AdminService --> User: Return update result
+
+=== Add Config ===
+User -> AdminService: POST /adminbasic/addConfig
+AdminService -> ConfigService: POST /config/create
+ConfigService -> ConfigMongo: Insert config data
+ConfigMongo --> ConfigService: Return insert result
+ConfigService --> AdminService: Return insert result
+AdminService --> User: Return insert result
+
+@enduml

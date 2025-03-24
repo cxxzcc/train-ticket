@@ -1,0 +1,21 @@
+@startuml
+actor User
+participant "ts-verification-code-service" as VerificationService
+participant "ts-verification-code-mongo" as Mongo
+
+== Generate Verification Code ==
+User -> VerificationService: POST /verification/generate
+activate VerificationService
+VerificationService -> VerificationService: Generate unique code
+VerificationService -> Mongo: INSERT INTO verification_code\n(code, status, created_time)
+activate Mongo
+Mongo --> VerificationService: Insert success
+deactivate Mongo
+VerificationService --> User: Return generated code (200 OK)
+deactivate VerificationService
+
+== Verify Verification Code ==
+User -> VerificationService: POST /verification/verify\n(code=XXXXXX)
+  VerificationService --> User: Return success (200 OK)
+deactivate VerificationService
+@enduml

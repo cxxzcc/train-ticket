@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-seat-service</OriginalElement>
+  <nodes>
+    <node x="-83.0" y="1046.0">seat.controller.SeatController</node>
+    <node x="66.0" y="126.0">seat.domain.Route</node>
+    <node x="-1.0" y="486.0">seat.domain.LeftTicketInfo</node>
+    <node x="24.0" y="-14.0">seat.domain.SeatRequest</node>
+    <node x="-93.0" y="866.0">seat.service.SeatService</node>
+    <node x="-78.0" y="46.0">seat.domain.QueryConfig</node>
+    <node x="2.5" y="806.0">seat.domain.QueryForStationId</node>
+    <node x="-68.0" y="186.0">seat.SeatApplication</node>
+    <node x="-88.0" y="546.0">seat.domain.TrainType</node>
+    <node x="11.5" y="986.0">seat.service.SeatServiceImpl</node>
+    <node x="-86.0" y="726.0">seat.domain.SeatClass</node>
+    <node x="33.0" y="306.0">seat.domain.GetRouteResult</node>
+    <node x="-34.0" y="366.0">seat.domain.Ticket</node>
+    <node x="-1.0" y="666.0">seat.domain.GetTrainTypeResult</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="seat.controller.SeatController" target="seat.service.SeatService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="-8.0" y="1020.0" />
+      <point x="-60.5" y="1020.0" />
+      <point x="-32.5" y="14.0" />
+    </edge>
+    <edge source="seat.domain.LeftTicketInfo" target="seat.domain.Ticket" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="72.0" y="460.0" />
+      <point x="12.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="seat.service.SeatServiceImpl" target="seat.service.SeatService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="92.0" y="960.0" />
+      <point x="4.5" y="960.0" />
+      <point x="32.5" y="14.0" />
+    </edge>
+    <edge source="seat.domain.GetTrainTypeResult" target="seat.domain.TrainType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="92.0" y="640.0" />
+      <point x="-28.0" y="640.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="seat.domain.GetRouteResult" target="seat.domain.Route" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.6895306859205776" showDependencies="true" x="59.0" y="540.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

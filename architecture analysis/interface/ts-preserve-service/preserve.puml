@@ -1,0 +1,161 @@
+@startuml
+actor User
+participant "ts-preserve-service" as PreserveService
+participant "ts-sso-service" as SsoService
+participant "ts-account-mongo" as AccountDB
+participant "ts-security-service" as SecurityService
+participant "ts-security-mongo" as SecurityDB
+participant "ts-contacts-service" as ContactsService
+participant "ts-contacts-mongo" as ContactsDB
+participant "ts-travel-service" as travelService
+participant "ts-travel-mongo" as travelDB
+participant "ts-station-service" as StationService
+participant "ts-station-mongo" as StationDB
+participant "ts-ticketinfo-service" as TicketService
+participant "ts-basic-service" as BasicService
+participant "ts-train-service" as TrainService
+participant "ts-train-mongo" as TrainDB
+participant "ts-route-service" as RouteService
+participant "ts-route-mongo" as RouteDB
+participant "ts-price-service" as PriceService
+participant "ts-price-mongo" as PriceDB
+participant "ts-seat-service" as SeatService
+participant "ts-travel-service" as TravelService
+participant "ts-travel-mongo" as TravelDB
+participant "ts-order-service" as OrderService
+participant "ts-order-other-service" as OrderOtherService
+participant "ts-order-other-mongo" as OrderOtherDB
+participant "ts-assurance-service" as AssuranceService
+participant "ts-assurance-mongo" as AssuranceDB
+participant "ts-food-service" as FoodService
+participant "ts-food-mongo" as FoodDB
+participant "ts-consign-service" as ConsignService
+participant "ts-consign-price-service" as ConsignPriceService
+participant "ts-consign-price-mongo" as ConsignPriceDB
+participant "ts-consign-mongo" as ConsignDB
+participant "ts-notification-service" as NotificationService
+
+User -> PreserveService: POST /preserve
+
+== Authentication & Security ==
+PreserveService -> SsoService: GET /verifyLoginToken
+SsoService -> AccountDB: Query login_user_list
+AccountDB --> SsoService: Return user data
+SsoService --> PreserveService: Verify result
+
+PreserveService -> SecurityService: POST /security/check
+SecurityService -> SecurityDB: Read security_config
+SecurityDB --> SecurityService: Return config
+SecurityService --> PreserveService: Security status
+
+== Data Retrieval ==
+PreserveService -> ContactsService: GET /getContactsById
+ContactsService -> ContactsDB: Query contacts
+ContactsDB --> ContactsService: Return contact data
+ContactsService --> PreserveService: Return contact
+
+PreserveService -> travelService: GET /getTripAllDetailInfo
+travelService -> travelDB: Query trip
+travelDB --> travelService: Return trip data
+travelService --> PreserveService: Return trip details
+
+PreserveService -> StationService: POST /queryForId
+StationService -> StationDB: Query station
+StationDB --> StationService: Return station ID
+StationService --> PreserveService: Return station ID
+
+== Ticket & Route Validation ==
+PreserveService -> TicketService: POST /queryForTravel
+TicketService -> BasicService: POST /queryForTravel
+BasicService -> StationService: GET /exist
+StationService -> StationDB: Check station
+StationDB --> StationService: Exist status
+StationService --> BasicService: Result
+BasicService -> TrainService: GET /retrieve
+TrainService -> TrainDB: Query trainType
+TrainDB --> TrainService: Return train type
+TrainService --> BasicService: Train type
+BasicService -> RouteService: GET /queryById
+RouteService -> RouteDB: Query routes
+RouteDB --> RouteService: Return route
+RouteService --> BasicService: Route data
+BasicService -> PriceService: GET /query
+PriceService -> PriceDB: Read price_config
+PriceDB --> PriceService: Return price
+PriceService --> BasicService: Price data
+BasicService --> TicketService: Aggregated data
+TicketService --> PreserveService: Ticket info
+
+== Seat Dispatch (Conditional) ==
+PreserveService -> SeatService: POST /getSeat
+alt if trainNumber starts with "G" or "D"
+  SeatService -> TravelService: GET /getRouteByTripId
+  TravelService -> TravelDB: Query trip
+  TravelDB --> TravelService: Route data
+  TravelService --> SeatService: Route info
+  SeatService -> OrderService: GET /getTicketListByDateAndTripId
+  OrderService -> OrderOtherDB: Query orders
+  OrderOtherDB --> OrderService: Order list
+  OrderService --> SeatService: Ticket list
+  SeatService -> TravelService: GET /getTrainTypeByTripId
+  TravelService -> TravelDB: Query trip
+  TravelDB --> TravelService: Train type
+  TravelService --> SeatService: Train type
+else
+  SeatService -> travelService: GET /getRouteByTripId
+  travelService -> travelDB: Query trip
+  travelDB --> travelService: Route data
+  travelService --> SeatService: Route info
+  SeatService -> OrderOtherService: GET /getTicketListByDateAndTripId
+  OrderOtherService -> OrderOtherDB: Query orders
+  OrderOtherDB --> OrderOtherService: Order list
+  OrderOtherService --> SeatService: Ticket list
+  SeatService -> travelService: GET /getTrainTypeByTripId
+  travelService -> travelDB: Query trip
+  travelDB --> travelService: Train type
+  travelService --> SeatService: Train type
+end
+SeatService --> PreserveService: Seat allocation result
+
+== Order Creation ==
+PreserveService -> OrderOtherService: POST /create
+OrderOtherService -> OrderOtherDB: Insert orders
+OrderOtherDB --> OrderOtherService: Order ID
+OrderOtherService --> PreserveService: Order confirmation
+
+== Additional Services (Conditional) ==
+alt if assurance != 0
+  PreserveService -> AssuranceService: POST /create
+  AssuranceService -> AssuranceDB: Insert assurance
+  AssuranceDB --> AssuranceService: Assurance ID
+  AssuranceService --> PreserveService: Assurance status
+end
+
+alt if foodType != 0
+  PreserveService -> FoodService: POST /createFoodOrder
+  FoodService -> FoodDB: Insert foodorder
+  FoodDB --> FoodService: Food order ID
+  FoodService --> PreserveService: Food order status
+end
+
+alt if consigneeName exists
+  PreserveService -> ConsignService: POST /insertConsign
+  ConsignService -> ConsignPriceService: GET /getPrice
+  ConsignPriceService -> ConsignPriceDB: Query consign_price
+  ConsignPriceDB --> ConsignPriceService: Price data
+  ConsignPriceService --> ConsignService: Price
+  ConsignService -> ConsignDB: Insert consign_record
+  ConsignDB --> ConsignService: Consign ID
+  ConsignService --> PreserveService: Consign status
+end
+
+== Finalization ==
+PreserveService -> SsoService: GET /account/findById
+SsoService -> AccountDB: Query accounts
+AccountDB --> SsoService: Account data
+SsoService --> PreserveService: Account info
+
+PreserveService -> NotificationService: POST /order_cancel_success
+NotificationService --> PreserveService: Email sent
+PreserveService --> User: Reservation result
+@enduml

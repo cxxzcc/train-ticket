@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/1p/project/ts-travel-service</OriginalElement>
+  <nodes>
+    <node x="757.0" y="226.0">travel.domain.Information2</node>
+    <node x="887.5" y="406.0">travel.domain.QueryInfo</node>
+    <node x="554.0" y="746.0">travel.domain.AdminFindAllResult</node>
+    <node x="626.5" y="626.0">travel.domain.GetTripAllDetailResult</node>
+    <node x="115.0" y="406.0">travel.init.InitData</node>
+    <node x="9.0" y="626.0">travel.domain.ResultForTravel</node>
+    <node x="365.0" y="226.0">travel.domain.ResultSoldTicket</node>
+    <node x="281.0" y="166.0">travel.domain.Information</node>
+    <node x="602.5" y="226.0">travel.domain.TripId</node>
+    <node x="322.0" y="406.0">travel.domain.Route</node>
+    <node x="434.0" y="806.0">travel.domain.GetTripAllDetailInfo</node>
+    <node x="429.0" y="626.0">travel.domain.GetRouteResult</node>
+    <node x="28.0" y="346.0">travel.domain.TrainType</node>
+    <node x="606.0" y="-14.0">travel.domain.Type</node>
+    <node x="274.5" y="746.0">travel.domain.GetTrainTypeInformation</node>
+    <node x="629.0" y="406.0">travel.domain.Trip</node>
+    <node x="144.0" y="806.0">travel.domain.GetTripsByRouteIdInfo</node>
+    <node x="65.0" y="166.0">travel.domain.QuerySoldTicket</node>
+    <node x="-3.5" y="746.0">travel.domain.GetTripsByRouteIdResult</node>
+    <node x="472.0" y="166.0">travel.repository.TripRepository</node>
+    <node x="266.0" y="626.0">travel.domain.AdminTrip</node>
+    <node x="187.0" y="346.0">travel.controller.TravelController</node>
+    <node x="401.5" y="346.0">travel.service.TravelServiceImpl</node>
+    <node x="-20.0" y="226.0">travel.domain.SeatRequest</node>
+    <node x="746.0" y="566.0">travel.domain.QueryTripResponsePackage</node>
+    <node x="177.0" y="226.0">travel.service.TravelService</node>
+    <node x="115.0" y="566.0">travel.domain.GetTrainTypeResult</node>
+    <node x="-121.5" y="806.0">travel.domain.QueryForStationId</node>
+    <node x="510.0" y="46.0">travel.domain.SeatClass</node>
+    <node x="696.0" y="346.0">travel.domain.TripResponse</node>
+    <node x="-118.0" y="406.0">travel.TravelApplication</node>
+    <node x="529.0" y="566.0">travel.domain.QueryForTravel</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="travel.domain.QueryForTravel" target="travel.domain.Trip" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="608.0" y="380.0" />
+      <point x="668.0" y="380.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel.domain.AdminTrip" target="travel.domain.Route" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="328.0" y="460.0" />
+      <point x="368.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="travel.service.TravelServiceImpl" target="travel.repository.TripRepository" relationship="TO_ONE">
+      <point x="43.25" y="-14.0" />
+      <point x="531.25" y="320.0" />
+      <point x="548.0" y="320.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="travel.domain.GetTrainTypeResult" target="travel.domain.TrainType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="208.0" y="540.0" />
+      <point x="88.0" y="540.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="travel.domain.TripResponse" target="travel.domain.TripId" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="768.0" y="300.0" />
+      <point x="728.0" y="300.0" />
+      <point x="728.0" y="200.0" />
+      <point x="648.0" y="200.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel.domain.GetTripAllDetailResult" target="travel.domain.TripResponse" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="728.0" y="540.0" />
+      <point x="868.0" y="540.0" />
+      <point x="868.0" y="320.0" />
+      <point x="768.0" y="320.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel.domain.Trip" target="travel.domain.TripId" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="668.0" y="300.0" />
+      <point x="728.0" y="300.0" />
+      <point x="728.0" y="200.0" />
+      <point x="648.0" y="200.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel.domain.ResultForTravel" target="travel.domain.TrainType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="travel.domain.AdminTrip" target="travel.domain.Trip" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="328.0" y="500.0" />
+      <point x="608.0" y="500.0" />
+      <point x="608.0" y="380.0" />
+      <point x="668.0" y="380.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel.domain.GetTripAllDetailResult" target="travel.domain.Trip" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="728.0" y="520.0" />
+      <point x="608.0" y="520.0" />
+      <point x="608.0" y="380.0" />
+      <point x="668.0" y="380.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel.domain.QueryTripResponsePackage" target="travel.domain.TripResponse" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="868.0" y="320.0" />
+      <point x="768.0" y="320.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel.domain.GetRouteResult" target="travel.domain.Route" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="508.0" y="480.0" />
+      <point x="368.0" y="480.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="travel.init.InitData" target="travel.service.TravelService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="168.0" y="320.0" />
+      <point x="208.0" y="320.0" />
+      <point x="208.0" y="280.0" />
+      <point x="212.5" y="280.0" />
+      <point x="-35.5" y="14.0" />
+    </edge>
+    <edge source="travel.service.TravelServiceImpl" target="travel.service.TravelService" relationship="REALIZATION">
+      <point x="-43.25" y="-14.0" />
+      <point x="444.75" y="320.0" />
+      <point x="283.5" y="320.0" />
+      <point x="35.5" y="14.0" />
+    </edge>
+    <edge source="travel.domain.AdminTrip" target="travel.domain.TrainType" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="328.0" y="480.0" />
+      <point x="88.0" y="480.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="travel.controller.TravelController" target="travel.service.TravelService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="268.0" y="320.0" />
+      <point x="208.0" y="320.0" />
+      <point x="208.0" y="280.0" />
+      <point x="212.5" y="280.0" />
+      <point x="-35.5" y="14.0" />
+    </edge>
+    <edge source="travel.domain.AdminFindAllResult" target="travel.domain.AdminTrip" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="648.0" y="720.0" />
+      <point x="408.0" y="720.0" />
+      <point x="408.0" y="600.0" />
+      <point x="328.0" y="600.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="travel.domain.TripId" target="travel.domain.Type" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.8592528236316247" showDependencies="true" x="453.5" y="420.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

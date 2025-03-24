@@ -1,0 +1,73 @@
+@startuml
+actor User
+participant "ts-food-service" as FoodService
+participant "ts-food-map-service" as FoodMapService
+participant "ts-travel-service" as TravelService
+participant "ts-station-service" as StationService
+participant "ts-food-mongo" as FoodMongo
+participant "ts-food-map-mongo" as FoodMapMongo
+participant "ts-travel-mongo" as TravelMongo
+participant "ts-station-mongo" as StationMongo
+
+== Get Food Information ==
+User -> FoodService: GET /food/getFood
+FoodService -> FoodMapService: GET /foodmap/getTrainFoodOfTrip
+FoodMapService -> FoodMapMongo: Query train food data
+FoodMapMongo --> FoodMapService: Return train food data
+FoodMapService --> FoodService: Return train food data
+
+FoodService -> TravelService: GET /travel/getRouteByTripId
+TravelService -> TravelMongo: Query trip route data
+TravelMongo --> TravelService: Return trip route data
+TravelService --> FoodService: Return trip route data
+
+alt if stationResult.isStatus()
+    alt if startStation is not empty
+        FoodService -> StationService: GET /station/queryForId
+        StationService -> StationMongo: Query start station data
+        StationMongo --> StationService: Return start station data
+        StationService --> FoodService: Return start station data
+    end
+
+    alt if endStation is not empty
+        FoodService -> StationService: GET /station/queryForId
+        StationService -> StationMongo: Query end station data
+        StationMongo --> StationService: Return end station data
+        StationService --> FoodService: Return end station data
+    end
+
+    loop for each station
+        FoodService -> FoodMapService: GET /foodmap/getFoodStoresOfStation
+        FoodMapService -> FoodMapMongo: Query food stores data
+        FoodMapMongo --> FoodMapService: Return food stores data
+        FoodMapService --> FoodService: Return food stores data
+    end
+end
+FoodService --> User: Return food information
+
+== Food Order Operations ==
+User -> FoodService: POST /food/createFoodOrder
+FoodService -> FoodMongo: Insert food order data
+FoodMongo --> FoodService: Return insert result
+FoodService --> User: Return order creation result
+
+User -> FoodService: DELETE /food/cancelFoodOrder
+FoodService -> FoodMongo: Delete food order data
+FoodMongo --> FoodService: Return delete result
+FoodService --> User: Return order cancellation result
+
+User -> FoodService: PUT /food/updateFoodOrder
+FoodService -> FoodMongo: Update food order data
+FoodMongo --> FoodService: Return update result
+FoodService --> User: Return order update result
+
+User -> FoodService: GET /food/findAllFoodOrder
+FoodService -> FoodMongo: Query all food orders
+FoodMongo --> FoodService: Return all food orders
+FoodService --> User: Return all food orders
+
+User -> FoodService: GET /food/findFoodOrderByOrderId
+FoodService -> FoodMongo: Query food order by ID
+FoodMongo --> FoodService: Return food order data
+FoodService --> User: Return food order data
+@enduml

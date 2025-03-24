@@ -1,0 +1,35 @@
+@startuml
+actor User
+participant "ts-price-service" as PriceService
+participant "ts-price-mongo" as Mongo
+
+== Query Single Price ==
+User -> PriceService: GET /price/query
+PriceService -> Mongo: Query price_config collection
+Mongo --> PriceService: Return price data
+PriceService --> User: Return price data
+
+== Query All Prices ==
+User -> PriceService: GET /price/queryAll
+PriceService -> Mongo: Query all price_config
+Mongo --> PriceService: Return all prices
+PriceService --> User: Return price list
+
+== Create Price ==
+User -> PriceService: POST /price/create
+PriceService -> Mongo: Insert new price_config
+Mongo --> PriceService: Return insertion result
+PriceService --> User: Return creation status
+
+== Delete Price ==
+User -> PriceService: DELETE /price/delete
+PriceService -> Mongo: Delete price_config
+Mongo --> PriceService: Return deletion result
+PriceService --> User: Return deletion status
+
+== Update Price ==
+User -> PriceService: PUT /price/update
+PriceService -> Mongo: Update price_config
+Mongo --> PriceService: Return update result
+PriceService --> User: Return update status
+@enduml

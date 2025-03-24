@@ -1,0 +1,66 @@
+@startuml
+actor User
+participant "ts-cancel-service" as CancelService
+participant "ts-order-service" as OrderService
+participant "ts-order-other-service" as OrderOtherService
+participant "ts-sso-service" as SsoService
+participant "ts-inside-payment-service" as PaymentService
+participant "ts-order-mongo" as OrderMongo
+participant "ts-order-other-mongo" as OrderOtherMongo
+participant "ts-account-mongo" as AccountMongo
+participant "ts-inside-payment-mongo" as PaymentMongo
+
+== Cancel Calculate Refund ==
+User -> CancelService: POST /cancelCalculateRefund
+CancelService -> OrderService: GET /order/getById/
+OrderService -> OrderMongo: Query orders collection
+OrderMongo --> OrderService: Return order data
+alt Order status is true
+    OrderService --> CancelService: Return order data
+else Order status is false
+    CancelService -> OrderOtherService: GET /orderOther/getById/
+    OrderOtherService -> OrderOtherMongo: Query orders collection
+    OrderOtherMongo --> OrderOtherService: Return order data
+    OrderOtherService --> CancelService: Return order data
+end
+CancelService --> User: Return refund calculation result
+
+== Cancel Order ==
+User -> CancelService: POST /cancelOrder
+CancelService -> SsoService: POST /verifyLoginToken/
+SsoService -> AccountMongo: Query login_user_list collection
+AccountMongo --> SsoService: Return login verification result
+SsoService --> CancelService: Return login verification result
+CancelService -> OrderService: GET /order/getById/
+OrderService -> OrderMongo: Query orders collection
+OrderMongo --> OrderService: Return order data
+alt Order status is true
+    OrderService --> CancelService: Return order data
+    CancelService -> OrderService: POST /order/update
+    OrderService -> OrderMongo: Update orders collection
+    OrderMongo --> OrderService: Return update result
+    OrderService --> CancelService: Return update result
+    CancelService -> PaymentService: POST /inside_payment/drawBack
+    PaymentService -> PaymentMongo: Update addMoney collection
+    PaymentMongo --> PaymentService: Return drawBack result
+    PaymentService --> CancelService: Return drawBack result
+    CancelService -> SsoService: GET /account/findById
+    SsoService -> AccountMongo: Query accounts collection
+    AccountMongo --> SsoService: Return account data
+    SsoService --> CancelService: Return account data
+else Order status is false
+    CancelService -> OrderOtherService: GET /orderOther/getById/
+    OrderOtherService -> OrderOtherMongo: Query orders collection
+    OrderOtherMongo --> OrderOtherService: Return order data
+    OrderOtherService --> CancelService: Return order data
+    CancelService -> OrderOtherService: POST /orderOther/update
+    OrderOtherService -> OrderOtherMongo: Update orders collection
+    OrderOtherMongo --> OrderOtherService: Return update result
+    OrderOtherService --> CancelService: Return update result
+    CancelService -> PaymentService: POST /inside_payment/drawBack
+    PaymentService -> PaymentMongo: Update addMoney collection
+    PaymentMongo --> PaymentService: Return drawBack result
+    PaymentService --> CancelService: Return drawBack result
+end
+CancelService --> User: Return cancel order result
+@enduml

@@ -1,0 +1,99 @@
+@startuml
+actor User
+participant "ts-order-other-service" as OrderService
+participant "ts-order-other-mongo" as OrderMongo
+participant "ts-station-service" as StationService
+participant "ts-station-mongo" as StationMongo
+
+== Get Order Other Info for Security ==
+User -> OrderService: GET /getOrderOtherInfoForSecurity
+OrderService -> OrderMongo: Query orders collection
+OrderMongo --> OrderService: Return order data
+OrderService --> User: Return order data
+
+== Admin Add Order ==
+User -> OrderService: POST /orderOther/adminAddOrder
+OrderService -> OrderMongo: Insert order data
+OrderMongo --> OrderService: Return insert result
+OrderService --> User: Return insert result
+
+== Admin Update Order ==
+User -> OrderService: PUT /orderOther/adminUpdate
+OrderService -> OrderMongo: Update order data
+OrderMongo --> OrderService: Return update result
+OrderService --> User: Return update result
+
+== Calculate Order ==
+User -> OrderService: POST /orderOther/calculate
+OrderService -> OrderMongo: Query orders collection
+OrderMongo --> OrderService: Return calculation result
+OrderService --> User: Return calculation result
+
+== Create Order ==
+User -> OrderService: POST /orderOther/create
+OrderService -> OrderMongo: Insert order data
+OrderMongo --> OrderService: Return insert result
+OrderService --> User: Return insert result
+
+== Delete Order ==
+User -> OrderService: DELETE /orderOther/delete
+OrderService -> OrderMongo: Delete order data
+OrderMongo --> OrderService: Return delete result
+OrderService --> User: Return delete result
+
+== Find All Orders ==
+User -> OrderService: GET /orderOther/findAll
+OrderService -> OrderMongo: Query orders collection
+OrderMongo --> OrderService: Return all orders
+OrderService --> User: Return all orders
+
+== Get Order by ID ==
+User -> OrderService: GET /orderOther/getById
+OrderService -> OrderMongo: Query orders collection
+OrderMongo --> OrderService: Return order data
+OrderService --> User: Return order data
+
+== Get Ticket List by Date and Trip ID ==
+User -> OrderService: GET /orderOther/getTicketListByDateAndTripId
+OrderService -> OrderMongo: Query orders collection
+OrderMongo --> OrderService: Return ticket list
+OrderService --> User: Return ticket list
+
+== Modify Order Status ==
+User -> OrderService: PUT /orderOther/modifyOrderStatus
+OrderService -> OrderMongo: Update order status
+OrderMongo --> OrderService: Return update result
+OrderService --> User: Return update result
+
+== Pay Order ==
+User -> OrderService: POST /orderOther/payOrder
+OrderService -> OrderMongo: Update payment status
+OrderMongo --> OrderService: Return payment result
+OrderService --> User: Return payment result
+
+== Calculate Price ==
+User -> OrderService: POST /orderOther/price
+OrderService -> OrderMongo: Query orders collection
+OrderMongo --> OrderService: Return price calculation
+OrderService --> User: Return price calculation
+
+== Query Orders ==
+User -> OrderService: POST /orderOther/query
+OrderService -> OrderMongo: Query orders collection
+OrderMongo --> OrderService: Return query result
+OrderService --> User: Return query result
+
+== Query for Refresh ==
+User -> OrderService: POST /orderOther/queryForRefresh
+OrderService -> StationService: POST /station/queryByIdBatch
+StationService -> StationMongo: Query station data
+StationMongo --> StationService: Return station data
+StationService --> OrderService: Return station data
+OrderService --> User: Return station data
+
+== Update Order ==
+User -> OrderService: PUT /orderOther/update
+OrderService -> OrderMongo: Update order data
+OrderMongo --> OrderService: Return update result
+OrderService --> User: Return update result
+@enduml
